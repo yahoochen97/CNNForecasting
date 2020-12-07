@@ -280,7 +280,7 @@ for (b in (IDX):(IDX)){
 
   # write results to disk
   averaged_nlZs = c(averaged_nlZs, mean(NLZ))
-  write.csv(mean(NLZ),output_file)
+  # write.csv(mean(NLZ),output_file)
 }
 
 # echo to terminal
