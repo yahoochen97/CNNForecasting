@@ -97,10 +97,10 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         
         % 2016 in R&R
         % do not need to load 2018/2020 data
-        continue;
-        CNNdata2018 = readData("data/CNNData2018.csv");
-        CNNdata2018(:, ["candidate_name"]) = [];
-        CNNdata = vertcat(CNNdata, CNNdata2018);
+
+%         CNNdata2018 = readData("data/CNNData2018.csv");
+%         CNNdata2018(:, ["candidate_name"]) = [];
+%         CNNdata = vertcat(CNNdata, CNNdata2018);
     elseif mode==3
         % forecast 2020 races
         CNNdata2020 = readData("data/CNNData2020.csv");
