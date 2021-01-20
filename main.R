@@ -54,6 +54,8 @@ TYPE = args[3]
 best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
 IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 
+test_year=2016
+
 # 1:length(horizons)
 for (b in (IDX):(IDX)) {
   
