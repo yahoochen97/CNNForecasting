@@ -134,7 +134,7 @@ function posttrain(raceinfos, fts, s2s, allRaces, hyp, tau, parms)
     if(~parms.plot)
 %         writetable(forecast,strcat('results/LOO',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
         % heuristic 2
-         writetable(forecast,strcat('results/',parms.type, '_h1_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
+         writetable(forecast,strcat('results/',parms.type, '_h2_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
     end
     
 %     disp(tau);
