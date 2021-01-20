@@ -295,8 +295,8 @@ for (b in (IDX):(IDX)) {
   # train stan model
   fit <- stan(file = "model.stan",
               data = stan_data, 
-              warmup = 10, 
-              iter = 50, 
+              warmup = 1000, 
+              iter = 5000, 
               chains = 3, 
               cores = 3, 
               thin = 4,
