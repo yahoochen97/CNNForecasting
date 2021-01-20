@@ -9,7 +9,10 @@ if (length(args)==0) {
 horizon = args[1]
 cv_year = args[2]
 TYPE = args[3]
-IDX = strtoi(args[4])
+IDX = args[4]
+
+best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
+best_cv_idx = best_cv_idx$opt_idx
 
 
 if (TYPE=='GP'){

@@ -6,8 +6,9 @@
 mkdir -p nlZs
 
 declare -a input_strs=(0 7 14 21 28 42 56)
+declare -a input_strs=(0)
 declare -a cv_years=(2016)
-declare -a TYPES=("GP")
+declare -a TYPES=("h1" "h2")
 
 number_file(){
     input_str=$1
@@ -25,11 +26,9 @@ one_job(){
 }
 
 for TYPE in ${TYPES[@]}; do
-    bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "h2_matlab" "./matlabrun $TYPE"
-
     for input_str in ${input_strs[@]}; do
         for cv_year in ${cv_years[@]}; do
-            bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "h2_${input_str}_${cv_year}" "./onerun $input_str $cv_year"
+            bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "${TYPE}_${input_str}_${cv_year}" "./onerun $TYPE $input_str $cv_year"
         done
     done
 done

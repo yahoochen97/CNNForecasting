@@ -1,8 +1,9 @@
 #!/bin/bash
 #BSUN -N
 
-input_str=$1
-cv_year=$2
+TYPE=$1
+input_str=$2
+cv_year=$3
 
 module add R-4
 module add gcc-8.3.0
@@ -11,6 +12,6 @@ mkdir -p /export/cluster-tmp/chenyehu
 
 export TMPDIR=/export/cluster-tmp/chenyehu
 
-Rscript --vanilla tmp.R $input_str $cv_year
+# Rscript --vanilla tmp.R $input_str $cv_year
 
-# Rscript --vanilla onejob.R 14 1992 'GP' 1
+Rscript --vanilla main.R $input_str $cv_year $TYPE

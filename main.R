@@ -22,12 +22,12 @@ if (length(args)==2){
 
 # load packages
 library(rstan)
-library(bayesplot)
-library(MCMCpack)
-library(dplyr)
-library(ggridges)
-library(ggplot2)
-library(grid)
+# library(bayesplot)
+# library(MCMCpack)
+# library(dplyr)
+# library(ggridges)
+# library(ggplot2)
+# library(grid)
 
 PLOT = FALSE
 
@@ -42,24 +42,27 @@ horizons = c('0',
 
 # the optimal index of hyperparameters in the loyo process
 # optimal index can be obtained with loocv_nlZs.R
-best_cv_idx = read.csv(paste("results/", TYPE, "_opthyp.csv", sep=''));
-best_cv_idx = best_cv_idx$opt_idx
 
-# if(TYPE=='GP'){
-#   best_cv_idx = c(37, 59, 19, 31, 55, 53, 99)
-# }
-# 
-# if(TYPE=='LM'){
-#   best_cv_idx = c(13, 12, 12, 10, 12,  9,  9)
-# }
+# best_cv_idx = read.csv(paste("results/", TYPE, "_opthyp.csv", sep=''));
+# best_cv_idx = best_cv_idx$opt_idx
 
+# R&R
+horizon = args[1]
+cv_year = args[2]
+TYPE = args[3]
+
+best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
+IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 
 # 1:length(horizons)
-for (a in 1:1) {
+for (b in (IDX):(IDX)) {
   
   # load the prior files
-  input_file = paste('results/LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  output_file = paste('results/stan_LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+  # input_file = paste('results/LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+  # output_file = paste('results/stan_LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+  input_file = paste('results/GP_', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('nlZs/stan_GP_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
+  
   data <- read.csv(input_file)
   print(input_file)
   
@@ -298,7 +301,9 @@ for (a in 1:1) {
               seed = a,
               refresh=0
   )
-  saveRDS(fit, file = paste("models/",TYPE, "_", test_year, "day_", horizons[a] ,"_fit.rds",sep=''))
+  # saveRDS(fit, file = paste("models/",TYPE, "_", test_year, "day_", horizons[a] ,"_fit.rds",sep=''))
+  
+  saveRDS(fit, file = paste("models/GP_",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
   
   # print(summary(fit,c('alpha','beta','ppb','eb','year_sig'))$summary)
   fit_params <- as.data.frame(fit)
@@ -607,154 +612,154 @@ for (a in 1:1) {
   #   }
   # }
   
-  LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
-    dplyr::group_by(State) %>% 
-    dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
-    dplyr::select(State, tmp) %>%
-    dplyr::distinct(State, tmp) %>%
-    dplyr::arrange((tmp)) %>%
-    dplyr::select(State)
-  
-  LEVELS = LEVELS$State
-  
-  DEMVOTE2018 = c()
-  REPVOTE2018 = c()
-  DEMUPPER = c()
-  DEMLOWER = c()
-  DEMMEDIAN = c()
-  REPUPPER = c()
-  REPLOWER = c()
-  REPMEDIAN = c()
-  for (i in length(LEVELS):1){
-    DEMVOTE2018 = c(DEMVOTE2018,posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='DEM','VOTE'][1])
-    REPVOTE2018 = c(REPVOTE2018,posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='REP','VOTE'][1])
-    pred = posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='DEM','Posterior_Vote']
-    u=quantile(pred,probs=c(0.975),names = FALSE)
-    m=quantile(pred,probs=c(0.5),names = FALSE)
-    l=quantile(pred,probs=c(0.025),names = FALSE)
-    DEMUPPER = c(DEMUPPER, u)
-    DEMLOWER = c(DEMLOWER, l)
-    DEMMEDIAN = c(DEMMEDIAN, m)
-    pred = posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='REP','Posterior_Vote']
-    u=quantile(pred,probs=c(0.975),names = FALSE)
-    m=quantile(pred,probs=c(0.5),names = FALSE)
-    l=quantile(pred,probs=c(0.025),names = FALSE)
-    REPUPPER = c(REPUPPER, u)
-    REPLOWER = c(REPLOWER, l)
-    REPMEDIAN = c(REPMEDIAN, m)  
-  }
-  VOTE2018 = data.frame(c(rev(as.character(LEVELS)),rev(as.character(LEVELS))),
-                        c(DEMVOTE2018, REPVOTE2018),
-                        c(rep('DEM',length(DEMVOTE2018)),rep('REP',length(REPVOTE2018))),
-                        c(DEMUPPER, REPUPPER),
-                        c(DEMLOWER, REPLOWER),
-                        c(DEMMEDIAN, REPMEDIAN)
-                        )
-  colnames(VOTE2018) = c("state","vote","party", 'upper','lower','m')
-  if(PLOT){
-    ggplot(VOTE2018, aes(fill=party, x=state, y=vote)) + 
-      geom_bar(position="stack", stat="identity") +
-      scale_x_discrete(limits = rev(LEVELS)) + 
-      coord_flip() + 
-      scale_fill_manual("Party", values = c("REP" = "red", "DEM" = "blue")) +
-      ggtitle("Actual vote share for major party candidates") +
-      theme(plot.title = element_text(hjust=0.5),
-            panel.background = element_rect(fill = 'white', colour = 'white'))
-  }
-  
-  posteriors$State <- factor(posteriors$State, levels = LEVELS)
-  
-  LIKENAMES = c('Safe R', 'Likely R','Lean R', 'Toss-up', 'Lean D','Likely D','Safe D')
-  posteriors$Type <- factor(posteriors$Type, levels = LIKENAMES)
-  
-  LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
-    dplyr::group_by(State) %>% 
-    dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
-    dplyr::select(State, tmp) %>%
-    dplyr::distinct(State, tmp) %>%
-    dplyr::arrange((tmp))
-  
-  STATE_COLORS = c()
-  incumbents = read.csv("data/incumbent2020.csv")
-  for (i in nrow(LEVELS):1) {
-    if(incumbents[as.character(incumbents$State)==LEVELS$State[i],'Incumbent']=='REP'){
-      STATE_COLORS = c(STATE_COLORS, 'red')
-    }
-    else{
-      STATE_COLORS = c(STATE_COLORS, 'blue')
-    }
-  }
-  
-  if(PLOT){
-    p = ggplot(posteriors, aes(x = Posterior_Vote, y = reorder(State, desc(State)), color = Party, fill = Party)) +
-      geom_density_ridges(alpha=0.6) +
-      scale_y_discrete(expand = c(0, 0), name = "") +
-      scale_x_continuous(expand = c(0, 0), breaks = c(0,20,40,60,80,100),
-                         name = "Posterior Vote (%)") +
-      theme(panel.grid.major.x = element_line(color = "gray"),
-            # explicitly set the horizontal lines (or they will disappear too)
-            panel.grid.major.y = element_line(size=.4, color="grey" ) ,
-            axis.text.y = element_text(colour =STATE_COLORS)) +
-      # geom_hline(yintercept=0:length(STATE_COLORS), linetype="solid", color = "grey", size=0.2) + 
-      scale_fill_manual(values = c("blue","red"), labels = c("DEM","REP")) +
-      scale_color_manual(values = c(NA,NA), guide = "none") +
-      coord_cartesian(xlim = c(0, 100), clip='on') +
-      guides(fill = guide_legend(
-        override.aes = list(
-          fill = c("blue","red"),
-          color = NA, point_color = NA)
-      )
-      ) +
-      geom_hline(yintercept=sum(LEVELS$tmp>=50)+1, linetype="dashed", color = "black") + 
-      ggtitle("Posterior predictive density of vote share for major party candidates") +
-      theme(plot.title = element_text(hjust=0.5),
-            panel.background = element_rect(fill = 'white', colour = 'white'))
-    
-  }
-  
-  LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
-    dplyr::group_by(State) %>% 
-    dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
-    dplyr::select(State, tmp) %>%
-    dplyr::distinct(State, tmp) %>%
-    dplyr::arrange((tmp))
-  LEVELS = LEVELS$State
-  
-  STATE_COLORS = c()
-  for (s in rev(sort(as.character(LEVELS)))) {
-    if(s=="AZ" | s=="NV"){
-      STATE_COLORS = c(STATE_COLORS, 'red')
-    }
-    else{
-      STATE_COLORS = c(STATE_COLORS, 'black')
-    }
-  }
-  
-  LeonLine = data.frame(y1=VOTE2018[VOTE2018$state=="CA" & VOTE2018$party=='REP',"lower"],
-                        y2=VOTE2018[VOTE2018$state=="CA" & VOTE2018$party=='REP',"upper"],
-                        x1=length(STATE_COLORS)-1,
-                        x2=length(STATE_COLORS)-1,
-                        party="DEM")
-  if(PLOT){
-    ggplot(VOTE2018, aes(y = m, x = reorder(state, desc(state)), fill = party)) + 
-      geom_errorbar(size = 0.75, aes(ymin=lower, ymax=upper, color=party), width=0.1, position=position_dodge(width=0.5)) +
-      geom_segment(data = LeonLine, aes(x = x1, y = y1, xend = x2, yend = y2, colour = "blue"),position=position_dodge(width=0.5)) +
-      scale_color_manual(name="party", values = alpha(c("blue","blue","red"), 0.5),
-                         labels=c("DEM","DEM","REP"))+
-      geom_point(size=1, mapping = aes(x = state, y = m, fill=party, color=party),position=position_dodge(width=0.5)) + 
-      scale_x_discrete(expand = c(0, 0), name = "") +
-      scale_y_continuous(expand = c(0, 0),
-                         name = "Posterior Vote (%)") +
-      coord_flip() + 
-      theme(panel.grid.major.x = element_line(color = "gray"),
-            panel.grid.major.y = element_line(size=.4, color="grey" ) ,
-            axis.text.y = element_text(colour =STATE_COLORS)) +
-      geom_point(data = VOTE2018, mapping = aes(x = state, y = vote, fill=party, color=party),
-                 size=4,shape='x', position=position_dodge(width=0.5)) + 
-      ggtitle("Posterior credible intervals of vote share for major party candidates") +
-      theme(plot.title = element_text(hjust=0.5),
-            panel.background = element_rect(fill = 'white', colour = 'white'))
-  }
+  # LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
+  #   dplyr::group_by(State) %>% 
+  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
+  #   dplyr::select(State, tmp) %>%
+  #   dplyr::distinct(State, tmp) %>%
+  #   dplyr::arrange((tmp)) %>%
+  #   dplyr::select(State)
+  # 
+  # LEVELS = LEVELS$State
+  # 
+  # DEMVOTE2018 = c()
+  # REPVOTE2018 = c()
+  # DEMUPPER = c()
+  # DEMLOWER = c()
+  # DEMMEDIAN = c()
+  # REPUPPER = c()
+  # REPLOWER = c()
+  # REPMEDIAN = c()
+  # for (i in length(LEVELS):1){
+  #   DEMVOTE2018 = c(DEMVOTE2018,posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='DEM','VOTE'][1])
+  #   REPVOTE2018 = c(REPVOTE2018,posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='REP','VOTE'][1])
+  #   pred = posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='DEM','Posterior_Vote']
+  #   u=quantile(pred,probs=c(0.975),names = FALSE)
+  #   m=quantile(pred,probs=c(0.5),names = FALSE)
+  #   l=quantile(pred,probs=c(0.025),names = FALSE)
+  #   DEMUPPER = c(DEMUPPER, u)
+  #   DEMLOWER = c(DEMLOWER, l)
+  #   DEMMEDIAN = c(DEMMEDIAN, m)
+  #   pred = posteriors[(posteriors$State)==LEVELS[i] & posteriors$Party=='REP','Posterior_Vote']
+  #   u=quantile(pred,probs=c(0.975),names = FALSE)
+  #   m=quantile(pred,probs=c(0.5),names = FALSE)
+  #   l=quantile(pred,probs=c(0.025),names = FALSE)
+  #   REPUPPER = c(REPUPPER, u)
+  #   REPLOWER = c(REPLOWER, l)
+  #   REPMEDIAN = c(REPMEDIAN, m)  
+  # }
+  # VOTE2018 = data.frame(c(rev(as.character(LEVELS)),rev(as.character(LEVELS))),
+  #                       c(DEMVOTE2018, REPVOTE2018),
+  #                       c(rep('DEM',length(DEMVOTE2018)),rep('REP',length(REPVOTE2018))),
+  #                       c(DEMUPPER, REPUPPER),
+  #                       c(DEMLOWER, REPLOWER),
+  #                       c(DEMMEDIAN, REPMEDIAN)
+  #                       )
+  # colnames(VOTE2018) = c("state","vote","party", 'upper','lower','m')
+  # if(PLOT){
+  #   ggplot(VOTE2018, aes(fill=party, x=state, y=vote)) + 
+  #     geom_bar(position="stack", stat="identity") +
+  #     scale_x_discrete(limits = rev(LEVELS)) + 
+  #     coord_flip() + 
+  #     scale_fill_manual("Party", values = c("REP" = "red", "DEM" = "blue")) +
+  #     ggtitle("Actual vote share for major party candidates") +
+  #     theme(plot.title = element_text(hjust=0.5),
+  #           panel.background = element_rect(fill = 'white', colour = 'white'))
+  # }
+  # 
+  # posteriors$State <- factor(posteriors$State, levels = LEVELS)
+  # 
+  # LIKENAMES = c('Safe R', 'Likely R','Lean R', 'Toss-up', 'Lean D','Likely D','Safe D')
+  # posteriors$Type <- factor(posteriors$Type, levels = LIKENAMES)
+  # 
+  # LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
+  #   dplyr::group_by(State) %>% 
+  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
+  #   dplyr::select(State, tmp) %>%
+  #   dplyr::distinct(State, tmp) %>%
+  #   dplyr::arrange((tmp))
+  # 
+  # STATE_COLORS = c()
+  # incumbents = read.csv("data/incumbent2020.csv")
+  # for (i in nrow(LEVELS):1) {
+  #   if(incumbents[as.character(incumbents$State)==LEVELS$State[i],'Incumbent']=='REP'){
+  #     STATE_COLORS = c(STATE_COLORS, 'red')
+  #   }
+  #   else{
+  #     STATE_COLORS = c(STATE_COLORS, 'blue')
+  #   }
+  # }
+  # 
+  # if(PLOT){
+  #   p = ggplot(posteriors, aes(x = Posterior_Vote, y = reorder(State, desc(State)), color = Party, fill = Party)) +
+  #     geom_density_ridges(alpha=0.6) +
+  #     scale_y_discrete(expand = c(0, 0), name = "") +
+  #     scale_x_continuous(expand = c(0, 0), breaks = c(0,20,40,60,80,100),
+  #                        name = "Posterior Vote (%)") +
+  #     theme(panel.grid.major.x = element_line(color = "gray"),
+  #           # explicitly set the horizontal lines (or they will disappear too)
+  #           panel.grid.major.y = element_line(size=.4, color="grey" ) ,
+  #           axis.text.y = element_text(colour =STATE_COLORS)) +
+  #     # geom_hline(yintercept=0:length(STATE_COLORS), linetype="solid", color = "grey", size=0.2) + 
+  #     scale_fill_manual(values = c("blue","red"), labels = c("DEM","REP")) +
+  #     scale_color_manual(values = c(NA,NA), guide = "none") +
+  #     coord_cartesian(xlim = c(0, 100), clip='on') +
+  #     guides(fill = guide_legend(
+  #       override.aes = list(
+  #         fill = c("blue","red"),
+  #         color = NA, point_color = NA)
+  #     )
+  #     ) +
+  #     geom_hline(yintercept=sum(LEVELS$tmp>=50)+1, linetype="dashed", color = "black") + 
+  #     ggtitle("Posterior predictive density of vote share for major party candidates") +
+  #     theme(plot.title = element_text(hjust=0.5),
+  #           panel.background = element_rect(fill = 'white', colour = 'white'))
+  #   
+  # }
+  # 
+  # LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
+  #   dplyr::group_by(State) %>% 
+  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
+  #   dplyr::select(State, tmp) %>%
+  #   dplyr::distinct(State, tmp) %>%
+  #   dplyr::arrange((tmp))
+  # LEVELS = LEVELS$State
+  # 
+  # STATE_COLORS = c()
+  # for (s in rev(sort(as.character(LEVELS)))) {
+  #   if(s=="AZ" | s=="NV"){
+  #     STATE_COLORS = c(STATE_COLORS, 'red')
+  #   }
+  #   else{
+  #     STATE_COLORS = c(STATE_COLORS, 'black')
+  #   }
+  # }
+  # 
+  # LeonLine = data.frame(y1=VOTE2018[VOTE2018$state=="CA" & VOTE2018$party=='REP',"lower"],
+  #                       y2=VOTE2018[VOTE2018$state=="CA" & VOTE2018$party=='REP',"upper"],
+  #                       x1=length(STATE_COLORS)-1,
+  #                       x2=length(STATE_COLORS)-1,
+  #                       party="DEM")
+  # if(PLOT){
+  #   ggplot(VOTE2018, aes(y = m, x = reorder(state, desc(state)), fill = party)) + 
+  #     geom_errorbar(size = 0.75, aes(ymin=lower, ymax=upper, color=party), width=0.1, position=position_dodge(width=0.5)) +
+  #     geom_segment(data = LeonLine, aes(x = x1, y = y1, xend = x2, yend = y2, colour = "blue"),position=position_dodge(width=0.5)) +
+  #     scale_color_manual(name="party", values = alpha(c("blue","blue","red"), 0.5),
+  #                        labels=c("DEM","DEM","REP"))+
+  #     geom_point(size=1, mapping = aes(x = state, y = m, fill=party, color=party),position=position_dodge(width=0.5)) + 
+  #     scale_x_discrete(expand = c(0, 0), name = "") +
+  #     scale_y_continuous(expand = c(0, 0),
+  #                        name = "Posterior Vote (%)") +
+  #     coord_flip() + 
+  #     theme(panel.grid.major.x = element_line(color = "gray"),
+  #           panel.grid.major.y = element_line(size=.4, color="grey" ) ,
+  #           axis.text.y = element_text(colour =STATE_COLORS)) +
+  #     geom_point(data = VOTE2018, mapping = aes(x = state, y = vote, fill=party, color=party),
+  #                size=4,shape='x', position=position_dodge(width=0.5)) + 
+  #     ggtitle("Posterior credible intervals of vote share for major party candidates") +
+  #     theme(plot.title = element_text(hjust=0.5),
+  #           panel.background = element_rect(fill = 'white', colour = 'white'))
+  # }
   
   # write results to csv
   result <- data.frame(CYCLE,
@@ -774,8 +779,9 @@ for (a in 1:1) {
   
   write.csv(result,output_file)
   
-  output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-
+  # output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+  output_file = paste('results/stan_NLZGP', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
+  
   result <- data.frame(NLZ)
 
   names(result) <- tolower(names(result))
