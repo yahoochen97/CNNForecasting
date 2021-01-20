@@ -11,6 +11,6 @@ mkdir -p /export/cluster-tmp/chenyehu
 
 export TMPDIR=/export/cluster-tmp/chenyehu
 
-# Rscript --vanilla tmp.R $input_str $cv_year
+Rscript --vanilla tmp.R $input_str $cv_year
 
-Rscript --vanilla onejob.R 14 1992 'GP' 1
+# Rscript --vanilla onejob.R 14 1992 'GP' 1

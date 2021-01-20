@@ -1,13 +1,9 @@
 #!/bin/bash
-#BSUB -o Senate.%J
-#BSUB -R '(!gpu)'
 #BSUN -N
-#BSUB -J matlab
 
 TYPE=$1
-horizon=$2
 
 # echo $TYPE
 # echo $horizon
 
-matlab -nodisplay -nodesktop -r "main('$TYPE',1,$horizon); exit"
+matlab -nodisplay -nodesktop -r "main('$TYPE',2,0,0); exit"

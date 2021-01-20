@@ -38,7 +38,14 @@ function [meanfunc, covfunc, likfunc, inffunc, prior] = model()
 
     % define prior distribution on linear trend
     mu_ml = 0.0; sigma_ml = 0.002;
+    
+    % try difference heuristic for intercept std
+    % heuristic 1: (distance to 0.5) / 2
+    % heuristic 2: 5%
     mu_mc = 0.5; sigma_mc = 0.1;
+    
+    % heuristic 2
+    sigma_mc = 0.05;
     prior.slope = [mu_ml, sigma_ml];
     prior.intercept = [mu_mc, sigma_mc];
 end

@@ -5,7 +5,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 # test if there is at least one argument: if not, use default 2020 with GP model
 if (length(args)==0) {
-  test_year = 2016
+  test_year = 2020
   # define model type: gp prior or lm prior
   TYPE = 'GP'
 }
@@ -55,7 +55,7 @@ best_cv_idx = best_cv_idx$opt_idx
 
 
 # 1:length(horizons)
-for (a in 2:2) {
+for (a in 1:1) {
   
   # load the prior files
   input_file = paste('results/LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
@@ -289,8 +289,8 @@ for (a in 2:2) {
   # train stan model
   fit <- stan(file = "model.stan",
               data = stan_data, 
-              warmup = 500, 
-              iter = 3000, 
+              warmup = 1000, 
+              iter = 5000, 
               chains = 3, 
               cores = 3, 
               thin = 4,
@@ -705,7 +705,7 @@ for (a in 2:2) {
           color = NA, point_color = NA)
       )
       ) +
-      geom_hline(yintercept=sum(LEVELS$tmp>=50), linetype="dashed", color = "black") + 
+      geom_hline(yintercept=sum(LEVELS$tmp>=50)+1, linetype="dashed", color = "black") + 
       ggtitle("Posterior predictive density of vote share for major party candidates") +
       theme(plot.title = element_text(hjust=0.5),
             panel.background = element_rect(fill = 'white', colour = 'white'))
@@ -775,11 +775,11 @@ for (a in 2:2) {
   write.csv(result,output_file)
   
   output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  
+
   result <- data.frame(NLZ)
-  
+
   names(result) <- tolower(names(result))
-  
+
   write.csv(result,output_file)
   
   # print("Test")

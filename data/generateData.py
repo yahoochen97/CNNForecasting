@@ -76,11 +76,11 @@ data = data.drop(columns=["start_date", "end_date", "election_date", "pct", "nam
 data = data[data.daysLeft>=-365]
 data = data.reset_index(drop=True)
 
-
 # select 2018 data
 data2018 = data[data.cycle==2018]
 
-data2018.loc[data2018.Candidateidentifier=="2018MSHyde-Smith", "Candidateidentifier"] = "2018MSSmith"
+# the warning came from here
+data2018.loc[(data2018.Candidateidentifier=="2018MSHyde-Smith"), "Candidateidentifier"] = "2018MSSmith"
 
 # Remove duplicate polls with different types
 # One polling id may have multiple question ids, corresponding to different types.
@@ -112,8 +112,6 @@ c = list(votes.keys())
 data2018 = data2018[data2018.Candidateidentifier.isin(c)]
 data2018 = data2018.reset_index(drop=True)
 
-
-
 # keep if flags == 0
 flags = (data2018.cycle!=2018)
 for pid in data2018.poll_id.unique():
@@ -143,7 +141,6 @@ for pid in data2018.poll_id.unique():
 # Select non-partisan polls and selection columns.
 # Partisan polls are sponsored by parties.
 
-
 data2018 = data2018[data2018.partisan.isnull()]
 data2018 = data2018[['cycle', 'state', 'pollster',
         'samplesize', 'candidate_name','Candidateidentifier', 'daysLeft',
@@ -169,6 +166,7 @@ data_pvi = pd.read_csv("pvi2018.csv", index_col=None)
 s2pvi = {}
 for s in data_pvi.state.unique():
     s2pvi[s] = data_pvi[data_pvi.state==s].pvi.values[0]
+
         
 # add experience column to 2018 data
 n = data2018.shape[0]
@@ -196,6 +194,7 @@ data2018 = pd.concat([data2018,data2018nopoll])
 
 # Write results to disk
 data2018.to_csv("./CNNdata2018.csv",  index = False)
+
 
 # drop null party sponsor data
 data.drop(data[data.population.isnull()].index, inplace=True)
@@ -239,6 +238,7 @@ data2020 = data2020[data2020.candidate_name!="Max Linn"]
 
 # drop third party
 data2020 = data2020[(data2020.Democrat==1) | (data2020.Republican==1)]
+# data2020 = data2020[(data2020.Democrat==1) | (data2020.Republican==1) | (data2020.candidate_name=="Lisa Savage")]
 
 # Select feature columns
 data2020 = data2020[['cycle', 'state', 'pollster',

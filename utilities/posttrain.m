@@ -132,13 +132,15 @@ function posttrain(raceinfos, fts, s2s, allRaces, hyp, tau, parms)
     end
 
     if(~parms.plot)
-        writetable(forecast,strcat('results/LOO',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
+%         writetable(forecast,strcat('results/LOO',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
+        % heuristic 2
+         writetable(forecast,strcat('results/',parms.type, '_h2_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
     end
     
-    disp(tau);
-    disp("Length Scale: " + exp(hyp.cov(1)));
-    disp("Output Scale: " + exp(hyp.cov(2)));
-    disp("Noise std: " + exp(hyp.lik));
+%     disp(tau);
+%     disp("Length Scale: " + exp(hyp.cov(1)));
+%     disp("Output Scale: " + exp(hyp.cov(2)));
+%     disp("Noise std: " + exp(hyp.lik));
     
 %     posteriorstd = cell2mat(posteriorstd);
 %     disp("Mean of predictive std: " + mean(posteriorstd));

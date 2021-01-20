@@ -5,7 +5,7 @@ function [varout]=main(TYPE, mode, tau, plot)
 %    - TYPE: 'GP' or 'LM', specifying the prior model
 %    - mode: 
 %      -: 1 for doing LOYO on year 1992 to 2016
-%      -: 2 for testing 2018 races
+%      -: 2 for testing 2018 races or 2016 in R&R
 %      -: 3 for forecasting 2020 races
 %    - tau: forecasting horizon
 %    - plot: whether to plot gp
@@ -35,11 +35,11 @@ function [varout]=main(TYPE, mode, tau, plot)
     
     if mode>=2
         % no search needed
-        % forecasting year 2018 or 2020
+        % forecasting year 2018 or 2020 or 2016 in R&R
         ts = readData("results/"+TYPE+"_opthyp.csv");
         ts = ts.opt_idx;
 
-        for i=3:6
+        for i=1:numel(taus)
             j = ts(i);
             if strcmp(TYPE, "GP")==1
                 ls = p(j,1)*(56-7)+7; % 7-56
@@ -94,6 +94,10 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
     if mode==2
         % test on 2018 data
         % load 2018 data
+        
+        % 2016 in R&R
+        % do not need to load 2018/2020 data
+        continue;
         CNNdata2018 = readData("data/CNNData2018.csv");
         CNNdata2018(:, ["candidate_name"]) = [];
         CNNdata = vertcat(CNNdata, CNNdata2018);
@@ -101,7 +105,13 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         % forecast 2020 races
         CNNdata2020 = readData("data/CNNData2020.csv");
         CNNdata2020(:, ["candidate_name"]) = [];
-        CNNdata2020.Percentage_of_Vote_won_x = zeros(size(CNNdata2020,1),1);
+        result2020 = readData("data/2020results.csv");
+        for i=1:size(CNNdata2020)
+            v = result2020.Percentage_of_Vote_won_x(strcmp(result2020.Candidateidentifier,CNNdata2020.Candidateidentifier(i)));
+            CNNdata2020.Percentage_of_Vote_won_x(i) = v;
+        end
+        
+        % CNNdata2020.Percentage_of_Vote_won_x = zeros(size(CNNdata2020,1),1);
         CNNdata = vertcat(CNNdata, CNNdata2020);
     end
 
@@ -161,6 +171,10 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
     if mode==2
         % tesing 2018 races
         parms.test_year = 2018;
+        
+        % tesing 2016 races in R&R
+        parms.test_year = 2016;
+        
         % precompute coefs of prior linear model of the linear trend intercept
         parms.coefs = priorModel(CNNdata, parms.test_year);
         plot_path = "plots/" + type + "MargLinTre"+num2str(parms.test_year)+"_"+num2str(tau);
@@ -174,7 +188,7 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         % write results to csv files
         posttrain(raceinfos,fts,s2s,allRaces,hyp, tau, parms);   
     elseif mode==3
-        % forecasting 2018 races
+        % forecasting 2020 races
         parms.test_year = 2020;
         % precompute coefs of prior linear model of the linear trend intercept
         parms.coefs = priorModel(CNNdata, parms.test_year);

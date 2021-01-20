@@ -25,6 +25,9 @@ function [allRaces,fts,s2s] = gpm(hyperparameter, xs, ys, raceinfos, plot_path, 
     mu_ml = prior.slope(1);
     sigma_mc = prior.intercept(2);
     
+    % heuristic 1:  (distance to 0.5) / 2
+    % sigma_mc = abs();
+    
     % AllRaces is a struct with key year+state.
     % Value of allRaces struct is an array of [model posterior mean, actual
     % vote, ...] of all candidates for the year/state race
@@ -36,7 +39,7 @@ function [allRaces,fts,s2s] = gpm(hyperparameter, xs, ys, raceinfos, plot_path, 
     s2s = zeros(n,1);
     
     % iterate every race
-    for i = n:-1:1
+    for i = 1:n
         % obtain metadata
         year = raceinfos{i}{1};
         state = raceinfos{i}{2}{1};

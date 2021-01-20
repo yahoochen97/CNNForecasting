@@ -1,12 +1,13 @@
 #!/bin/bash
-declare -a input_strs=(0 7 14 21 28 42 56)
-declare -a cv_years=(1992 1994 1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016 2018)
-declare -a TYPES=("GP" "LM")
+# declare -a input_strs=(0 7 14 21 28 42 56)
+# declare -a cv_years=(1992 1994 1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016 2018)
+# declare -a TYPES=("GP" "LM")
 
 mkdir -p nlZs
 
-# declare -a input_strs=(0)
-# declare -a cv_years=(2012)
+declare -a input_strs=(0 7 14 21 28 42 56)
+declare -a cv_years=(2016)
+declare -a TYPES=("GP")
 
 number_file(){
     input_str=$1
@@ -22,6 +23,16 @@ one_job(){
     # echo $("./onerun $input_str $cv_year $TYPE")
     echo $(bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -o /home/research/chenyehu/log/Log."${input_str}_${cv_year}_${TYPE}" -J "${input_str}_${cv_year}_${TYPE}" "./onerun $input_str $cv_year $TYPE")
 }
+
+for TYPE in ${TYPES[@]}; do
+    bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "h2_matlab" "./matlabrun $TYPE"
+
+    for input_str in ${input_strs[@]}; do
+        for cv_year in ${cv_years[@]}; do
+            bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "h2_${input_str}_${cv_year}" "./onerun $input_str $cv_year"
+        done
+    done
+done
 
 # for TYPE in ${TYPES[@]}; do
 #     for input_str in ${input_strs[@]}; do
@@ -45,11 +56,5 @@ one_job(){
 #     done
 # done
 
-declare -a input_strs=(0)
-
-for input_str in ${input_strs[@]}; do
-    for cv_year in ${cv_years[@]}; do
-        bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "${input_str}_${cv_year}" "./onerun $input_str $cv_year"
-    done
-done
+# declare -a input_strs=(0)
 
