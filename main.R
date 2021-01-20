@@ -55,6 +55,7 @@ best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
 IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 
 test_year=2016
+a = 1
 
 # 1:length(horizons)
 for (b in (IDX):(IDX)) {
@@ -294,8 +295,8 @@ for (b in (IDX):(IDX)) {
   # train stan model
   fit <- stan(file = "model.stan",
               data = stan_data, 
-              warmup = 1000, 
-              iter = 5000, 
+              warmup = 10, 
+              iter = 50, 
               chains = 3, 
               cores = 3, 
               thin = 4,
