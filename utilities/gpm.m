@@ -25,8 +25,6 @@ function [allRaces,fts,s2s] = gpm(hyperparameter, xs, ys, raceinfos, plot_path, 
     mu_ml = prior.slope(1);
     sigma_mc = prior.intercept(2);
     
-    % heuristic 1:  (distance to 0.5) / 2
-    % sigma_mc = abs();
     
     % AllRaces is a struct with key year+state.
     % Value of allRaces struct is an array of [model posterior mean, actual
@@ -56,6 +54,9 @@ function [allRaces,fts,s2s] = gpm(hyperparameter, xs, ys, raceinfos, plot_path, 
         % compute prior mean on intercept
         mu_b = computePrior(pvi, experienced, party, parms);
         
+        % heuristic 1:  (distance to 0.5) / 2
+        sigma_mc = abs(mu_b-0.5)/2;
+    
         if numel(xs{i})==0
             % if there is no data avaiable
             % use prior
