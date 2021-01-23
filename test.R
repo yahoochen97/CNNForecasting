@@ -300,6 +300,6 @@ test_years = c(1992,1994,1996,1998,2000,2002,2004,2006,2008,2010,2012,2014,2016)
  
 # generate_Prior_results('LM',best_lm_idx, test_years, horizons)
 
-generate_BRW_results(test_years, horizons)
+# generate_BRW_results(test_years, horizons)
 
-generate_BRW_results(c(2018), horizons)
+# generate_BRW_results(c(2018), horizons)

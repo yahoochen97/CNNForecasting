@@ -178,6 +178,7 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         % precompute coefs of prior linear model of the linear trend intercept
         parms.coefs = priorModel(CNNdata, parms.test_year);
         plot_path = "plots/" + type + "MargLinTre"+num2str(parms.test_year)+"_"+num2str(tau);
+        plot_path = "RR/plots/" + type + "_"+num2str(parms.test_year)+"_"+num2str(tau);
         if strcmp(type, "GP")==1
             [allRaces, fts, s2s] = gpm(hyp, xs, ys, raceinfos, plot_path, parms);
         else

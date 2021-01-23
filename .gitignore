@@ -10,6 +10,7 @@ nlZs/
 models/
 plots/
 playgrounds/
+RR/
 *.mat
 *.txt
 *.m~
