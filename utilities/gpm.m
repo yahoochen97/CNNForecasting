@@ -56,6 +56,7 @@ function [allRaces,fts,s2s] = gpm(hyperparameter, xs, ys, raceinfos, plot_path, 
         
         % heuristic 1:  (distance to 0.5) / 2
         % sigma_mc = abs(mu_b-0.5)/2;
+        sigma_mc = 0.1;
     
         if numel(xs{i})==0
             % if there is no data avaiable
