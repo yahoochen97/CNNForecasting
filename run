@@ -7,7 +7,7 @@ mkdir -p nlZs
 
 declare -a input_strs=(0 7 14 21 28 42 56)
 declare -a cv_years=(2016)
-declare -a TYPES=("h1" "h2")
+declare -a TYPES=("h1")
 
 number_file(){
     input_str=$1
