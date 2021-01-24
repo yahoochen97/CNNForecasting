@@ -54,7 +54,7 @@ TYPE = args[3]
 best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
 IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 
-test_year=2012
+test_year=2016
 a = 1
 
 # 1:length(horizons)
@@ -63,7 +63,7 @@ for (b in (IDX):(IDX)) {
   # load the prior files
   # input_file = paste('results/LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
   # output_file = paste('results/stan_LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  input_file = paste('results/GP_', cv_year, 'day', horizon, '_', b ,'.csv',sep='')
+  input_file = paste('results/GP_', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
   output_file = paste('nlZs/stan_GP_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
   
   data <- read.csv(input_file)
@@ -83,7 +83,7 @@ for (b in (IDX):(IDX)) {
   data_test <- data[(data$cycle==test_year),]
   data <- data[(data$cycle!=test_year & data$cycle!=2018 & data$cycle!=2020),]
     
-  data <- data[(data$cycle<test_year),]
+  # data <- data[(data$cycle<test_year),]
 
   cycles <- unique(data$cycle)
   states <- union(unique(data$state), unique(data_test$state))

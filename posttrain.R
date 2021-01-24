@@ -6,7 +6,7 @@ horizons = c('0',
              '42',
              '56')
 
-TYPE='GP_h2'
+TYPE='GP_h1'
 
 best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''));
 best_cv_idx = best_cv_idx$opt_idx
