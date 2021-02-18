@@ -1,0 +1,536 @@
+year,state,incumbency
+1992,Alabama,Shelby
+1992,Alaska,Murkowski
+1992,Arizona,McCain
+1992,Arkansas,Bumpers
+1992,California,Boxer
+1992,CaliforniaS,Feinstein
+1992,Colorado,Campbell
+1992,Connecticut,Dodd
+1992,Florida,Graham
+1992,Georgia,Coverdell
+1992,Hawaii,Inouye
+1992,Idaho,Kempthorne
+1992,Illinois,MoseleyBraun
+1992,Indiana,Coats
+1992,Iowa,Grassley
+1992,Kansas,Dole
+1992,Kentucky,Ford
+1992,Maryland,Mikulski
+1992,Missouri,Bond
+1992,Nevada,Reid
+1992,New Hampshire,Gregg
+1992,New York,DAmato
+1992,North Carolina,Faircloth
+1992,North Dakota,Dorgan
+1992,North DakotaS,Conrad
+1992,Ohio,Glenn
+1992,Oklahoma,Nickles
+1992,Oregon,Packwood
+1992,Pennsylvania,Specter
+1992,South Carolina,Hollings
+1992,South Dakota,Daschle
+1992,Utah,Bennett
+1992,Vermont,Leahy
+1992,Washington,Murray
+1992,Wisconsin,Feingold
+1994,Arizona,Kyl
+1994,California,Feinstein
+1994,Connecticut,Lieberman
+1994,Delaware,Roth
+1994,Florida,Mack
+1994,Hawaii,Akaka
+1994,Indiana,Lugar
+1994,Maine,Snowe
+1994,Maryland,Sarbanes
+1994,Massachusetts,Kennedy
+1994,Michigan,Abraham
+1994,Minnesota,Grams
+1994,Mississippi,Lott
+1994,Missouri,Ashcroft
+1994,Montana,Burns
+1994,Nebraska,Kerrey
+1994,Nevada,Bryan
+1994,New Jersey,Lautenberg
+1994,New Mexico,Bingaman
+1994,New York,Moynihan
+1994,North Dakota,Conrad
+1994,Ohio,DeWine
+1994,Oklahoma,Inhofe
+1994,Pennsylvania,Santorum
+1994,Rhode Island,Chafee
+1994,Tennessee,Frist
+1994,TennesseeS,Thompson
+1994,Texas,Hutchison
+1994,Utah,Hatch
+1994,Vermont,Jeffords
+1994,Virginia,Robb
+1994,Washington,Gorton
+1994,West Virginia,Byrd
+1994,Wisconsin,Kohl
+1994,Wyoming,Thomas
+1996,Alabama,Sessions
+1996,Arkansas,Hutchinson
+1996,Colorado,Allard
+1996,Delaware,Biden
+1996,Georgia,Cleland
+1996,Idaho,Craig
+1996,Illinois,Durbin
+1996,Iowa,Harkin
+1996,Kansas,Roberts
+1996,KansasS,Brownback
+1996,Kentucky,McConnell
+1996,Louisiana,Landrieu
+1996,Maine,Collins
+1996,Massachusetts,Kerry
+1996,Michigan,Levin
+1996,Minnesota,Wellstone
+1996,Mississippi,Cochran
+1996,Montana,Baucus
+1996,Nebraska,Hagel
+1996,New Hampshire,Smith
+1996,New Jersey,Torricelli
+1996,New Mexico,Domenici
+1996,North Carolina,Helms
+1996,Oklahoma,Inhofe
+1996,Oregon,Smith
+1996,Rhode Island,Reed
+1996,South Carolina,Thurmond
+1996,South Dakota,Johnson
+1996,Tennessee,Thompson
+1996,Texas,Gramm
+1996,Virginia,Warner1
+1996,West Virginia,Rockefeller
+1996,Wyoming,Enzi
+1998,Alabama,Shelby
+1998,Alaska,Murkowski
+1998,Arizona,McCain
+1998,Arkansas,Lincoln
+1998,California,Boxer
+1998,Colorado,Campbell
+1998,Connecticut,Dodd
+1998,Florida,Graham
+1998,Georgia,Coverdell
+1998,Hawaii,Inouye
+1998,Idaho,Crapo
+1998,Illinois,Fitzgerald
+1998,Indiana,Bayh
+1998,Iowa,Grassley
+1998,Kansas,Brownback
+1998,Kentucky,Bunning
+1998,Louisiana,Breaux
+1998,Maryland,Mikulski
+1998,Missouri,Bond
+1998,Nevada,Reid
+1998,New Hampshire,Gregg
+1998,New York,Schumer
+1998,North Carolina,Edwards
+1998,North Dakota,Dorgan
+1998,Ohio,Voinovich
+1998,Oklahoma,Nickles
+1998,Oregon,Wyden
+1998,Pennsylvania,Specter
+1998,South Carolina,Hollings
+1998,South Dakota,Daschle
+1998,Utah,Bennett
+1998,Vermont,Leahy
+1998,Washington,Murray
+1998,Wisconsin,Feingold
+2000,California,Feinstein
+2000,Connecticut,Lieberman
+2000,Delaware,Carper
+2000,Florida,Nelson
+2000,Georgia,Miller
+2000,Hawaii,Akaka
+2000,Indiana,Lugar
+2000,Maine,Snowe
+2000,Maryland,Sarbanes
+2000,Michigan,Stabenow
+2000,Minnesota,Dayton
+2000,Mississippi,Lott
+2000,Missouri,Carnahan
+2000,Montana,Burns
+2000,Nebraska,Nelson
+2000,Nevada,Ensign
+2000,New Jersey,Corzine
+2000,New Mexico,Bingaman
+2000,New York,Clinton
+2000,North Dakota,Conrad
+2000,Ohio,DeWine
+2000,Pennsylvania,Santorum
+2000,Rhode Island,Chafee
+2000,Tennessee,Frist
+2000,Texas,Hutchison
+2000,Utah,Hatch
+2000,Vermont,Jeffords
+2000,Virginia,Allen
+2000,Washington,Cantwell
+2000,West Virginia,Byrd
+2000,Wisconsin,Kohl
+2000,Wyoming,Thomas
+2002,Alabama,Sessions
+2002,Arkansas,Pryor
+2002,Colorado,Allard
+2002,Delaware,Biden
+2002,Georgia,Chambliss
+2002,Idaho,Craig
+2002,Illinois,Durbin
+2002,Iowa,Harkin
+2002,Kentucky,McConnell
+2002,Maine,Collins
+2002,Michigan,Levin
+2002,Minnesota,Coleman
+2002,Missouri,Talent
+2002,Montana,Baucus
+2002,Nebraska,Hagel
+2002,New Hampshire,Sununu
+2002,New Jersey,Lautenberg
+2002,New Mexico,Domenici
+2002,North Carolina,Dole
+2002,Oklahoma,Inhofe
+2002,Oregon,Smith
+2002,Rhode Island,Reed
+2002,South Carolina,Graham
+2002,South Dakota,Johnson
+2002,Tennessee,Alexander
+2002,Texas,Cornyn
+2002,West Virginia,Rockefeller
+2002,Wyoming,Enzi
+2004,Alabama,Shelby
+2004,Alaska,Murkowski
+2004,Arizona,McCain
+2004,Arkansas,Lincoln
+2004,California,Boxer
+2004,Colorado,Salazar
+2004,Connecticut,Dodd
+2004,Florida,Martinez
+2004,Georgia,Isakson
+2004,Hawaii,Inouye
+2004,Illinois,Obama
+2004,Indiana,Bayh
+2004,Iowa,Grassley
+2004,Kansas,Brownback
+2004,Kentucky,Bunning
+2004,Louisiana,Vitter
+2004,Maryland,Mikulski
+2004,Missouri,Bond
+2004,Nevada,Reid
+2004,New Hampshire,Gregg
+2004,New York,Schumer
+2004,North Carolina,Burr
+2004,North Dakota,Dorgan
+2004,Ohio,Voinovich
+2004,Oklahoma,Coburn
+2004,Oregon,Wyden
+2004,Pennsylvania,Specter
+2004,South Carolina,DeMint
+2004,South Dakota,Thune
+2004,Utah,Bennett
+2004,Vermont,Leahy
+2004,Washington,Murray
+2004,Wisconsin,Feingold
+2006,Arizona,Kyl
+2006,California,Feinstein
+2006,Connecticut,Lamont
+2006,Delaware,Carper
+2006,Florida,Nelson
+2006,Hawaii,Akaka
+2006,Maine,Snowe
+2006,Maryland,Cardin
+2006,Massachusetts,Kennedy
+2006,Michigan,Stabenow
+2006,Minnesota,Klobuchar
+2006,Mississippi,Lott
+2006,Missouri,McCaskill
+2006,Montana,Tester
+2006,Nebraska,Nelson
+2006,Nevada,Ensign
+2006,New Jersey,Menendez
+2006,New Mexico,Bingaman
+2006,New York,Clinton
+2006,North Dakota,Conrad
+2006,Ohio,Brown
+2006,Pennsylvania,Casey
+2006,Rhode Island,Whitehouse
+2006,Tennessee,Corker
+2006,Texas,Hutchison
+2006,Utah,Hatch1
+2006,Vermont,Sanders
+2006,Virginia,Webb
+2006,Washington,Cantwell
+2006,West Virginia,Byrd
+2006,Wisconsin,Kohl
+2006,Wyoming,Thomas
+2008,Alabama,Sessions
+2008,Alaska,Begich
+2008,Colorado,Udall
+2008,Delaware,Biden
+2008,Georgia,Chambliss
+2008,Idaho,Risch
+2008,Illinois,Durbin
+2008,Iowa,Harkin
+2008,Kansas,Roberts
+2008,Kentucky,McConnell
+2008,Louisiana,Landrieu
+2008,Maine,Collins
+2008,Massachusetts,Kerry
+2008,Michigan,Levin
+2008,Minnesota,Franken
+2008,Mississippi,Cochran
+2008,MississippiS,Wicker
+2008,Montana,Baucus
+2008,Nebraska,Johanns
+2008,New Hampshire,Shaheen
+2008,New Jersey,Lautenberg
+2008,New Mexico,Udall
+2008,North Carolina,Hagan
+2008,Oklahoma,Inhofe
+2008,Oregon,Merkley
+2008,Rhode Island,Reed
+2008,South Carolina,Graham
+2008,South Dakota,Johnson
+2008,Tennessee,Alexander
+2008,Texas,Cornyn
+2008,Virginia,Warner
+2008,West Virginia,Rockefeller
+2008,Wyoming,Enzi
+2008,WyomingS,Barrasso
+2010,Alabama,Shelby
+2010,Alaska,Murkowski
+2010,Arizona,McCain
+2010,Arkansas,Boozman
+2010,California,Boxer
+2010,Colorado,Bennet
+2010,Connecticut,Blumenthal
+2010,Delaware,Coons
+2010,Florida,Rubio
+2010,Georgia,Isakson
+2010,Hawaii,Inouye
+2010,Idaho,Crapo
+2010,Illinois,Kirk
+2010,Indiana,Coats
+2010,Iowa,Grassley
+2010,Kansas,Moran
+2010,Kentucky,Paul
+2010,Louisiana,Vitter
+2010,Maryland,Mikulski
+2010,Missouri,Blunt
+2010,Nevada,Reid
+2010,New Hampshire,Ayotte
+2010,New York,Schumer
+2010,New YorkS,Gillibrand
+2010,North Carolina,Burr
+2010,North Dakota,Hoeven
+2010,Ohio,Portman
+2010,Oklahoma,Coburn
+2010,Oregon,Wyden
+2010,Pennsylvania,Toomey
+2010,South Carolina,DeMint
+2010,Utah,Lee
+2010,Vermont,Leahy
+2010,Washington,Murray
+2010,West Virginia,Manchin
+2010,Wisconsin,Johnson
+2012,Arizona,Flake
+2012,California,Feinstein
+2012,Connecticut,Murphy
+2012,Delaware,TCarper
+2012,Florida,Nelson
+2012,Hawaii,Hirono
+2012,Indiana,Donnelly
+2012,Maine,King
+2012,Maryland,Cardin
+2012,Massachusetts,Warren
+2012,Michigan,Stabenow
+2012,Minnesota,Klobuchar
+2012,Mississippi,Wicker
+2012,Missouri,McCaskill
+2012,Montana,Tester
+2012,Nebraska,Fischer
+2012,Nevada,Heller
+2012,New Jersey,Menendez
+2012,New Mexico,Heinrich
+2012,New York,Gillibrand
+2012,North Dakota,Heitkamp
+2012,Ohio,Brown
+2012,Pennsylvania,Casey
+2012,Rhode Island,Whitehouse
+2012,Tennessee,Corker
+2012,Texas,Cruz
+2012,Utah,Hatch
+2012,Vermont,Sanders
+2012,Virginia,Kaine
+2012,Washington,Cantwell
+2012,West Virginia,Manchin
+2012,Wisconsin,Baldwin
+2012,Wyoming,Barrasso
+2014,Alaska,Sullivan
+2014,Arkansas,Cotton
+2014,Colorado,Gardner
+2014,Delaware,Coons
+2014,Georgia,Perdue
+2014,Hawaii,Schatz
+2014,Idaho,Risch
+2014,Illinois,Durbin
+2014,Iowa,Ernst
+2014,Kansas,Roberts
+2014,Kentucky,McConnell
+2014,Maine,Collins
+2014,Massachusetts,Markey
+2014,Michigan,Peters
+2014,Minnesota,Franken
+2014,Mississippi,Cochran
+2014,Montana,Daines
+2014,Nebraska,Sasse
+2014,New Hampshire,Shaheen
+2014,New Jersey,Booker
+2014,New Mexico,Udall
+2014,North Carolina,Tillis
+2014,Oklahoma,Inhofe
+2014,OklahomaS,Lankford
+2014,Oregon,Merkley
+2014,Rhode Island,Reed
+2014,South Carolina,Graham
+2014,South CarolinaS,Scott
+2014,South Dakota,Rounds
+2014,Tennessee,Alexander
+2014,Texas,Cornyn
+2014,Virginia,Warner
+2014,West Virginia,Capito
+2014,Wyoming,Enzi
+2016,Alabama,Shelby
+2016,Alaska,Murkowski
+2016,Arizona,McCain
+2016,Arkansas,Boozman
+2016,California,Harris
+2016,Colorado,Bennet
+2016,Connecticut,Blumenthal
+2016,Florida,Rubio
+2016,Georgia,Isakson
+2016,Hawaii,Schatz
+2016,Idaho,Crapo
+2016,Illinois,Duckworth
+2016,Indiana,Young
+2016,Iowa,Grassley
+2016,Kansas,Moran
+2016,Kentucky,Paul
+2016,Maryland,VanHollen
+2016,Missouri,Blunt
+2016,Nevada,CortezMasto
+2016,New Hampshire,WoodHassan
+2016,New York,Schumer
+2016,North Carolina,Burr
+2016,North Dakota,Hoeven
+2016,Ohio,Portman
+2016,Oklahoma,Lankford
+2016,Oregon,Wyden
+2016,Pennsylvania,Toomey
+2016,South Carolina,Scott
+2016,South Dakota,Thune
+2016,Utah,Lee
+2016,Vermont,Leahy
+2016,Washington,Murray
+2016,Wisconsin,Johnson
+1990,Alabama,Heflin
+1990,Alaska,Stevens
+1990,Arkansas,Pryor
+1990,Colorado,Brown
+1990,Delaware,Biden
+1990,Georgia,Nunn
+1990,Idaho,Craig
+1990,Illinois,Simon
+1990,Iowa,Harkin
+1990,Kansas,Kassebaum
+1990,Kentucky,McConnell
+1990,Louisiana,Johnston
+1990,Maine,Cohen
+1990,Massachusetts,Kerry
+1990,Michigan,Levin
+1990,Minnesota,Wellstone
+1990,Mississippi,Cochran
+1990,Montana,Baucus
+1990,Nebraska,Exon
+1990,New Hampshire,Smith
+1990,New Jersey,Bradley
+1990,New Mexico,Domenici
+1990,North Carolina,
+1990,Oklahoma,Boren
+1990,Oregon,Hatfield
+1990,Rhode Island,Pell
+1990,South Carolina,Thurmond
+1990,South Dakota,Pressler
+1990,Tennessee,Gore
+1990,Texas,Gramm
+1990,Virginia,Warner
+1990,West Virginia,Rockefeller
+1990,Wyoming,Simpson
+1990,Hawaii,Akaka
+1990,Indiana,Coats
+1988,Arizona,DeConcini
+1988,California,Wilson
+1988,Connecticut,Lieberman
+1988,Delaware,Roth
+1988,Florida,Mack
+1988,Hawaii,Matsunaga
+1988,Indiana,Lugar
+1988,Maine,Mitchell
+1988,Maryland,Sarbanes
+1988,Massachusetts,Kennedy
+1988,Michigan,Riegle
+1988,Minnesota,Durenberger
+1988,Mississippi,Lott
+1988,Missouri,Danforth
+1988,Montana,Burns
+1988,Nebraska,Kerrey
+1988,Nevada,Bryan
+1988,New Jersey,Lautenberg
+1988,New Mexico,Bingaman
+1988,New York,Moynihan
+1988,North Dakota,Burdick
+1988,Ohio,Metzenbaum
+1988,Pennsylvania,Heinz
+1988,Rhode Island,Chafee
+1988,Tennessee,Sasser
+1988,Texas,Bentsen
+1988,Utah,Hatch
+1988,Vermont,Jeffords
+1988,Virginia,Robb
+1988,Washington,Gorton
+1988,West Virginia,Bryd
+1988,Wisconsin,Kohl
+1988,Wyoming,Wallop
+1986,Alabama,Shelby
+1986,Alaska,Murkowski
+1986,Arizona,McCain
+1986,Arkansas,Bumpers
+1986,California,Cranston
+1986,Colorado,Wirth
+1986,Connecticut,Dodd
+1986,Florida,Graham
+1986,Georgia,Fowler
+1986,Hawaii,Inouye
+1986,Idaho,Symms
+1986,Illinois,Dixon
+1986,Indiana,Quayle
+1986,Iowa,Grassley
+1986,Kansas,Dole
+1986,Kentucky,Ford
+1986,Louisiana,Breaux
+1986,Maryland,Mikulski
+1986,Missouri,Bond
+1986,Nevada,Reid
+1986,New Hampshire,Rudman
+1986,New York,Amato
+1986,North Carolina,Sanford
+1986,North Dakota,Conrad
+1986,Ohio,Glenn
+1986,Oklahoma,Nickles
+1986,Oregon,Packwood
+1986,Pennsylvania,Specter
+1986,South Carolina,Hollings
+1986,South Dakota,Daschle
+1986,Utah,Garn
+1986,Vermont,Leahy
+1986,Washington,Adams
+1986,Wisconsin,Kasten
+1986,North Carolina,Sanford

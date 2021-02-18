@@ -174,7 +174,7 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         
         % tesing 2016 races in R&R
         parms.test_year = 2016;
-        winner_all = readData("RR/winners_all.csv");
+        winner_all = readData("data/winners_all.csv");
 
         % add incumbency
         for i=1:numel(raceinfos)
