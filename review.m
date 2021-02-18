@@ -155,3 +155,40 @@ set(fig, 'PaperPosition', [0 0 5 5]); %Position plot at left hand corner with wi
 set(fig, 'PaperSize', [5 5]); %Set the paper to have width 5 and height 5.
 print(fig, filename, '-dpdf','-r300');
 close;
+
+
+% add incumbency
+
+CNNdata = readData("data/CNNdata1992-2016.csv");
+years = unique(CNNdata.cycle);
+states = unique(CNNdata.state);
+YEAR = [];
+STATE = [];
+WINNER = [];
+for i = 1:numel(years)
+   for j = 1:numel(states)
+      [~, ~, candidateNames, v, pvi, experienced, parties] = getRaceCandidateData(CNNdata, years(i), states(j));
+      if isempty(v), continue; end
+      YEAR = [YEAR, years(i)];
+      STATE = [STATE, states(j)];
+      [~, k] = max(v);
+      WINNER = [WINNER, candidateNames(k)];
+   end
+end
+
+WINNER_TABLE = table(YEAR',STATE',WINNER','VariableNames',{'year','state','incumbency'});
+writetable(WINNER_TABLE, "RR/winners.csv");
+
+winner_all = readData("RR/winners_all.csv");
+
+for i=1:numel(raceinfos)
+   year = raceinfos{i}{1};
+   state = raceinfos{i}{2};
+   c = cell2mat(raceinfos{i}{3});
+   incumbent = cell2mat(winner_all.incumbency(winner_all.year==(year-6) & strcmp(winner_all.state,state)));
+   if strcmp(c,incumbent)
+      raceinfos{i}{8} = 1; 
+   else
+      raceinfos{i}{8} = 0;
+   end
+end

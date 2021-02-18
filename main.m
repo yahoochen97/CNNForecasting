@@ -174,6 +174,20 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         
         % tesing 2016 races in R&R
         parms.test_year = 2016;
+        winner_all = readData("RR/winners_all.csv");
+
+        % add incumbency
+        for i=1:numel(raceinfos)
+           year = raceinfos{i}{1};
+           state = raceinfos{i}{2};
+           c = cell2mat(raceinfos{i}{3});
+           incumbent = cell2mat(winner_all.incumbency(winner_all.year==(year-6) & strcmp(winner_all.state,state)));
+           if strcmp(c,incumbent)
+              raceinfos{i}{8} = 1; 
+           else
+              raceinfos{i}{8} = 0;
+           end
+        end
         
         % precompute coefs of prior linear model of the linear trend intercept
         parms.coefs = priorModel(CNNdata, parms.test_year);

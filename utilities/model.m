@@ -45,7 +45,7 @@ function [meanfunc, covfunc, likfunc, inffunc, prior] = model()
     mu_mc = 0.5; sigma_mc = 0.1;
     
     % heuristic 2
-    sigma_mc = 0.05;
+    % sigma_mc = 0.05;
     prior.slope = [mu_ml, sigma_ml];
     prior.intercept = [mu_mc, sigma_mc];
 end

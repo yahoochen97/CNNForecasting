@@ -2,8 +2,9 @@
 #BSUN -N
 
 TYPE=$1
+horizon=$2
 
 # echo $TYPE
 # echo $horizon
 
-matlab -nodisplay -nodesktop -r "main('$TYPE',2,0,0); exit"
+matlab -nodisplay -nodesktop -r "main('$TYPE',2,'$horizon',0); exit"
