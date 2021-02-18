@@ -14,4 +14,4 @@ export TMPDIR=/export/cluster-tmp/chenyehu
 
 # Rscript --vanilla tmp.R $input_str $cv_year
 
-Rscript --vanilla main.R $input_str $cv_year $TYPE
+Rscript --vanilla incumbency.R $input_str $cv_year $TYPE
