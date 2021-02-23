@@ -6,7 +6,7 @@
 mkdir -p nlZs
 
 declare -a input_strs=(0 7 14 21 28 42 56)
-declare -a cv_years=(2018)
+declare -a cv_years=(2020)
 declare -a TYPES=("GP")
 
 number_file(){
