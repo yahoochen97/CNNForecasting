@@ -1,4 +1,76 @@
 cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numberSupport,Democrat,Republican,pvi,experienced
+2020,Georgia,AtlasIntel,857,Jon Ossoff,2020GAOssoff,-4,439.0,1,0,-5.23,0.0
+2020,Georgia,AtlasIntel,857,David A. Perdue,2020GAPerdue,-4,401.0,0,1,-5.23,1.0
+2020,GeorgiaS,AtlasIntel,857,Raphael Warnock,2020GAWarnock,-4,435.0,1,0,-5.23,0.0
+2020,GeorgiaS,AtlasIntel,857,Kelly Loeffler,2020GALoeffler,-4,401.0,0,1,-5.23,0.0
+2020,Georgia,Opinion Savvy/InsiderAdvantage,500,Jon Ossoff,2020GAOssoff,-3,243.0,1,0,-5.23,0.0
+2020,Georgia,Opinion Savvy/InsiderAdvantage,500,David A. Perdue,2020GAPerdue,-3,243.0,0,1,-5.23,1.0
+2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,500,Raphael Warnock,2020GAWarnock,-3,243.0,1,0,-5.23,0.0
+2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,500,Kelly Loeffler,2020GALoeffler,-3,246.0,0,1,-5.23,0.0
+2020,Georgia,"University of Nevada, Las Vegas",550,Jon Ossoff,2020GAOssoff,-7,262.0,1,0,-5.23,0.0
+2020,Georgia,"University of Nevada, Las Vegas",550,David A. Perdue,2020GAPerdue,-7,268.0,0,1,-5.23,1.0
+2020,GeorgiaS,"University of Nevada, Las Vegas",550,Raphael Warnock,2020GAWarnock,-7,262.0,1,0,-5.23,0.0
+2020,GeorgiaS,"University of Nevada, Las Vegas",550,Kelly Loeffler,2020GALoeffler,-7,267.0,0,1,-5.23,0.0
+2020,Georgia,Targoz Market Research,713,Jon Ossoff,2020GAOssoff,-7,356.0,1,0,-5.23,0.0
+2020,Georgia,Targoz Market Research,713,David A. Perdue,2020GAPerdue,-7,356.0,0,1,-5.23,1.0
+2020,GeorgiaS,Targoz Market Research,713,Raphael Warnock,2020GAWarnock,-7,363.0,1,0,-5.23,0.0
+2020,GeorgiaS,Targoz Market Research,713,Kelly Loeffler,2020GALoeffler,-7,349.0,0,1,-5.23,0.0
+2020,Georgia,AtlasIntel,1680,Jon Ossoff,2020GAOssoff,-12,861.0,1,0,-5.23,0.0
+2020,Georgia,AtlasIntel,1680,David A. Perdue,2020GAPerdue,-12,789.0,0,1,-5.23,1.0
+2020,GeorgiaS,AtlasIntel,1680,Raphael Warnock,2020GAWarnock,-12,858.0,1,0,-5.23,0.0
+2020,GeorgiaS,AtlasIntel,1680,Kelly Loeffler,2020GALoeffler,-12,787.0,0,1,-5.23,0.0
+2020,Georgia,Gravis Marketing,1011,Jon Ossoff,2020GAOssoff,-8,505.0,1,0,-5.23,0.0
+2020,Georgia,Gravis Marketing,1011,David A. Perdue,2020GAPerdue,-8,475.0,0,1,-5.23,1.0
+2020,GeorgiaS,Gravis Marketing,1011,Raphael Warnock,2020GAWarnock,-8,495.0,1,0,-5.23,0.0
+2020,GeorgiaS,Gravis Marketing,1011,Kelly Loeffler,2020GALoeffler,-8,475.0,0,1,-5.23,0.0
+2020,Georgia,JMC Analytics,500,Jon Ossoff,2020GAOssoff,-9,265.0,1,0,-5.23,0.0
+2020,Georgia,JMC Analytics,500,David A. Perdue,2020GAPerdue,-9,225.0,0,1,-5.23,1.0
+2020,GeorgiaS,JMC Analytics,500,Raphael Warnock,2020GAWarnock,-9,270.0,1,0,-5.23,0.0
+2020,GeorgiaS,JMC Analytics,500,Kelly Loeffler,2020GALoeffler,-9,225.0,0,1,-5.23,0.0
+2020,Georgia,Open Model Project,1405,Jon Ossoff,2020GAOssoff,-16,640.0,1,0,-5.23,0.0
+2020,Georgia,Open Model Project,1405,David A. Perdue,2020GAPerdue,-16,695.0,0,1,-5.23,1.0
+2020,GeorgiaS,Open Model Project,1405,Raphael Warnock,2020GAWarnock,-16,649.0,1,0,-5.23,0.0
+2020,GeorgiaS,Open Model Project,1405,Kelly Loeffler,2020GALoeffler,-16,706.0,0,1,-5.23,0.0
+2020,Georgia,Opinion Savvy/InsiderAdvantage,500,Jon Ossoff,2020GAOssoff,-16,237.0,1,0,-5.23,0.0
+2020,Georgia,Opinion Savvy/InsiderAdvantage,500,David A. Perdue,2020GAPerdue,-16,247.0,0,1,-5.23,1.0
+2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,500,Raphael Warnock,2020GAWarnock,-16,242.0,1,0,-5.23,0.0
+2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,500,Kelly Loeffler,2020GALoeffler,-16,236.0,0,1,-5.23,0.0
+2020,Georgia,Reconnect Research/Probolsky Research,1027,Jon Ossoff,2020GAOssoff,-23,431.0,1,0,-5.23,0.0
+2020,Georgia,Reconnect Research/Probolsky Research,1027,David A. Perdue,2020GAPerdue,-23,441.0,0,1,-5.23,1.0
+2020,GeorgiaS,Reconnect Research/Probolsky Research,1027,Raphael Warnock,2020GAWarnock,-23,441.0,1,0,-5.23,0.0
+2020,GeorgiaS,Reconnect Research/Probolsky Research,1027,Kelly Loeffler,2020GALoeffler,-23,431.0,0,1,-5.23,0.0
+2020,Georgia,SurveyUSA,600,Jon Ossoff,2020GAOssoff,-21,306.0,1,0,-5.23,0.0
+2020,Georgia,SurveyUSA,600,David A. Perdue,2020GAPerdue,-21,276.0,0,1,-5.23,1.0
+2020,GeorgiaS,SurveyUSA,600,Raphael Warnock,2020GAWarnock,-21,312.0,1,0,-5.23,0.0
+2020,GeorgiaS,SurveyUSA,600,Kelly Loeffler,2020GALoeffler,-21,270.0,0,1,-5.23,0.0
+2020,Georgia,Emerson College,605,Jon Ossoff,2020GAOssoff,-23,296.0,1,0,-5.23,0.0
+2020,Georgia,Emerson College,605,David A. Perdue,2020GAPerdue,-23,308.0,0,1,-5.23,1.0
+2020,GeorgiaS,Emerson College,605,Raphael Warnock,2020GAWarnock,-23,295.0,1,0,-5.23,0.0
+2020,GeorgiaS,Emerson College,605,Kelly Loeffler,2020GALoeffler,-23,309.0,0,1,-5.23,0.0
+2020,Georgia,Opinion Savvy/InsiderAdvantage,500,Jon Ossoff,2020GAOssoff,-23,239.0,1,0,-5.23,0.0
+2020,Georgia,Opinion Savvy/InsiderAdvantage,500,David A. Perdue,2020GAPerdue,-23,245.0,0,1,-5.23,1.0
+2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,500,Raphael Warnock,2020GAWarnock,-23,240.0,1,0,-5.23,0.0
+2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,500,Kelly Loeffler,2020GALoeffler,-23,246.0,0,1,-5.23,0.0
+2020,Georgia,Revily,1500,Jon Ossoff,2020GAOssoff,-27,700.0,1,0,-5.23,0.0
+2020,Georgia,Revily,1500,David A. Perdue,2020GAPerdue,-27,762.0,0,1,-5.23,1.0
+2020,GeorgiaS,Revily,1500,Raphael Warnock,2020GAWarnock,-27,715.0,1,0,-5.23,0.0
+2020,GeorgiaS,Revily,1500,Kelly Loeffler,2020GALoeffler,-27,753.0,0,1,-5.23,0.0
+2020,Georgia,RMG Research,1417,Jon Ossoff,2020GAOssoff,-29,694.0,1,0,-5.23,0.0
+2020,Georgia,RMG Research,1417,David A. Perdue,2020GAPerdue,-29,665.0,0,1,-5.23,1.0
+2020,GeorgiaS,RMG Research,1417,Raphael Warnock,2020GAWarnock,-29,694.0,1,0,-5.23,0.0
+2020,GeorgiaS,RMG Research,1417,Kelly Loeffler,2020GALoeffler,-29,680.0,0,1,-5.23,0.0
+2020,Georgia,Fabrizio Ward/Hart Research Associates,1250,Jon Ossoff,2020GAOssoff,-37,600.0,1,0,-5.23,0.0
+2020,Georgia,Fabrizio Ward/Hart Research Associates,1250,David A. Perdue,2020GAPerdue,-37,575.0,0,1,-5.23,1.0
+2020,GeorgiaS,Fabrizio Ward/Hart Research Associates,1250,Raphael Warnock,2020GAWarnock,-37,587.0,1,0,-5.23,0.0
+2020,GeorgiaS,Fabrizio Ward/Hart Research Associates,1250,Kelly Loeffler,2020GALoeffler,-37,575.0,0,1,-5.23,0.0
+2020,Georgia,SurveyUSA,583,Jon Ossoff,2020GAOssoff,-40,291.0,1,0,-5.23,0.0
+2020,Georgia,SurveyUSA,583,David A. Perdue,2020GAPerdue,-40,279.0,0,1,-5.23,1.0
+2020,GeorgiaS,SurveyUSA,583,Raphael Warnock,2020GAWarnock,-40,303.0,1,0,-5.23,0.0
+2020,GeorgiaS,SurveyUSA,583,Kelly Loeffler,2020GALoeffler,-40,262.0,0,1,-5.23,0.0
+2020,Georgia,RMG Research,1377,Jon Ossoff,2020GAOssoff,-48,660.0,1,0,-5.23,0.0
+2020,Georgia,RMG Research,1377,David A. Perdue,2020GAPerdue,-48,647.0,0,1,-5.23,1.0
+2020,GeorgiaS,RMG Research,1377,Raphael Warnock,2020GAWarnock,-48,660.0,1,0,-5.23,0.0
+2020,GeorgiaS,RMG Research,1377,Kelly Loeffler,2020GALoeffler,-48,633.0,0,1,-5.23,0.0
 2020,Georgia,Opinion Savvy/InsiderAdvantage,800,Jon Ossoff,2020GAOssoff,-51,392.0,1,0,-5.23,0.0
 2020,Georgia,Opinion Savvy/InsiderAdvantage,800,David A. Perdue,2020GAPerdue,-51,392.0,0,1,-5.23,1.0
 2020,GeorgiaS,Opinion Savvy/InsiderAdvantage,800,Raphael Warnock,2020GAWarnock,-51,392.0,1,0,-5.23,0.0
@@ -13,7 +85,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Montana,Change Research,920,Steve Daines,2020MTDaines,-6,460.0,0,1,-10.61,1.0
 2020,Maine,Change Research,1024,Sara Gideon,2020MEGideon,-6,471.0,1,0,2.9,1.0
 2020,Maine,Change Research,1024,Susan M. Collins,2020MECollins,-6,430.0,0,1,2.9,1.0
-2020,Maine,Change Research,1024,Lisa Savage,2020MESavage,-6,91.0,0,0,2.9,0.0
 2020,Maine,Change Research,1024,Sara Gideon,2020MEGideon,-6,552.0,1,0,2.9,1.0
 2020,Maine,Change Research,1024,Susan M. Collins,2020MECollins,-6,471.0,0,1,2.9,1.0
 2020,Arizona,Ipsos,610,Mark Kelly,2020AZKelly,-8,323.0,1,0,-2.47,0.0
@@ -110,7 +181,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Arizona,Emerson College,732,Martha McSally,2020AZMcSally,-6,348.0,0,1,-2.47,1.0
 2020,Maine,Emerson College,611,Sara Gideon,2020MEGideon,-6,290.0,1,0,2.9,1.0
 2020,Maine,Emerson College,611,Susan M. Collins,2020MECollins,-6,279.0,0,1,2.9,1.0
-2020,Maine,Emerson College,611,Lisa Savage,2020MESavage,-6,36.0,0,0,2.9,0.0
 2020,North Carolina,Emerson College,855,Cal Cunningham,2020NCCunningham,-6,430.0,1,0,-3.32,1.0
 2020,North Carolina,Emerson College,855,Thom Tillis,2020NCTillis,-6,403.0,0,1,-3.32,1.0
 2020,Georgia,Emerson College,749,Jon Ossoff,2020GAOssoff,-6,366.0,1,0,-5.23,0.0
@@ -235,7 +305,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Minnesota,SurveyUSA,649,Jason Lewis,2020MNLewis,-12,272.0,0,1,0.64,1.0
 2020,Maine,SurveyUSA,1007,Sara Gideon,2020MEGideon,-12,463.0,1,0,2.9,1.0
 2020,Maine,SurveyUSA,1007,Susan M. Collins,2020MECollins,-12,453.0,0,1,2.9,1.0
-2020,Maine,SurveyUSA,1007,Lisa Savage,2020MESavage,-12,50.0,0,0,2.9,0.0
 2020,Maine,SurveyUSA,1007,Sara Gideon,2020MEGideon,-12,513.0,1,0,2.9,1.0
 2020,Maine,SurveyUSA,1007,Susan M. Collins,2020MECollins,-12,493.0,0,1,2.9,1.0
 2020,North Carolina,Siena College/The New York Times Upshot,1034,Cal Cunningham,2020NCCunningham,-12,475.0,1,0,-3.32,1.0
@@ -307,7 +376,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Arizona,The Justice Collaborative Institute,1007,Martha McSally,2020AZMcSally,-13,402.0,0,1,-2.47,1.0
 2020,Maine,Colby College,879,Sara Gideon,2020MEGideon,-14,409.0,1,0,2.9,1.0
 2020,Maine,Colby College,879,Susan M. Collins,2020MECollins,-14,381.0,0,1,2.9,1.0
-2020,Maine,Colby College,879,Lisa Savage,2020MESavage,-14,55.0,0,0,2.9,0.0
 2020,Texas,Siena College/The New York Times Upshot,802,Mary Jennings Hegar,2020TXHegar,-15,304.0,1,0,-5.55,0.0
 2020,Texas,Siena College/The New York Times Upshot,802,John Cornyn,2020TXCornyn,-15,384.0,0,1,-5.55,1.0
 2020,Michigan,ABC News/The Washington Post,789,Gary C. Peters,2020MIPeters,-15,410.0,1,0,1.31,1.0
@@ -594,7 +662,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Texas,Civiqs,895,John Cornyn,2020TXCornyn,-32,420.0,0,1,-5.55,1.0
 2020,Maine,Pan Atlantic Research,600,Sara Gideon,2020MEGideon,-33,281.0,1,0,2.9,1.0
 2020,Maine,Pan Atlantic Research,600,Susan M. Collins,2020MECollins,-33,238.0,0,1,2.9,1.0
-2020,Maine,Pan Atlantic Research,600,Lisa Savage,2020MESavage,-33,41.0,0,0,2.9,0.0
 2020,Minnesota,SurveyUSA,929,Tina Smith,2020MNSmith,-34,408.0,1,0,0.64,1.0
 2020,Minnesota,SurveyUSA,929,Jason Lewis,2020MNLewis,-34,343.0,0,1,0.64,1.0
 2020,Colorado,SurveyUSA,1021,John Hickenlooper,2020COHickenlooper,-34,490.0,1,0,0.77,1.0
@@ -633,7 +700,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Alaska,Patinkin Research Strategies,600,Dan Sullivan,2020AKSullivan,-35,276.0,0,1,-9.39,1.0
 2020,Maine,Critical Insights,466,Sara Gideon,2020MEGideon,-40,205.0,1,0,2.9,1.0
 2020,Maine,Critical Insights,466,Susan M. Collins,2020MECollins,-40,200.0,0,1,2.9,1.0
-2020,Maine,Critical Insights,466,Lisa Savage,2020MESavage,-40,13.0,0,0,2.9,0.0
 2020,Alaska,Alaska Survey Research,676,Al Gross,2020AKGross,-40,297.0,1,0,-9.39,0.0
 2020,Alaska,Alaska Survey Research,676,Dan Sullivan,2020AKSullivan,-40,324.0,0,1,-9.39,1.0
 2020,Texas,YouGov,908,Mary Jennings Hegar,2020TXHegar,-40,381.0,1,0,-5.55,0.0
@@ -712,7 +778,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Michigan,Marist College,799,John James,2020MIJames,-46,351.0,0,1,1.31,0.0
 2020,Maine,Colby College,847,Sara Gideon,2020MEGideon,-48,381.0,1,0,2.9,1.0
 2020,Maine,Colby College,847,Susan M. Collins,2020MECollins,-48,347.0,0,1,2.9,1.0
-2020,Maine,Colby College,847,Lisa Savage,2020MESavage,-48,67.0,0,0,2.9,0.0
 2020,Iowa,Monmouth University,402,Theresa Greenfield,2020IAGreenfield,-47,196.0,1,0,-2.64,1.0
 2020,Iowa,Monmouth University,402,Joni K. Ernst,2020IAErnst,-47,184.0,0,1,-2.64,1.0
 2020,Iowa,Monmouth University,402,Theresa Greenfield,2020IAGreenfield,-47,192.0,1,0,-2.64,1.0
@@ -758,7 +823,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,North Carolina,Change Research,579,Thom Tillis,2020NCTillis,-47,248.0,0,1,-3.32,1.0
 2020,Maine,Suffolk University,500,Sara Gideon,2020MEGideon,-48,231.0,1,0,2.9,1.0
 2020,Maine,Suffolk University,500,Susan M. Collins,2020MECollins,-48,205.0,0,1,2.9,1.0
-2020,Maine,Suffolk University,500,Lisa Savage,2020MESavage,-48,35.0,0,0,2.9,0.0
 2020,Maine,Suffolk University,500,Sara Gideon,2020MEGideon,-48,246.0,1,0,2.9,1.0
 2020,Maine,Suffolk University,500,Susan M. Collins,2020MECollins,-48,211.0,0,1,2.9,1.0
 2020,North Carolina,Harper Polling,612,Cal Cunningham,2020NCCunningham,-48,269.0,1,0,-3.32,1.0
@@ -828,7 +892,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Maine,Siena College/The New York Times Upshot,663,Susan M. Collins,2020MECollins,-54,291.0,0,1,2.9,1.0
 2020,Maine,Siena College/The New York Times Upshot,663,Sara Gideon,2020MEGideon,-54,291.0,1,0,2.9,1.0
 2020,Maine,Siena College/The New York Times Upshot,663,Susan M. Collins,2020MECollins,-54,265.0,0,1,2.9,1.0
-2020,Maine,Siena College/The New York Times Upshot,663,Lisa Savage,2020MESavage,-54,26.0,0,0,2.9,0.0
 2020,North Carolina,Siena College/The New York Times Upshot,653,Cal Cunningham,2020NCCunningham,-54,274.0,1,0,-3.32,1.0
 2020,North Carolina,Siena College/The New York Times Upshot,653,Thom Tillis,2020NCTillis,-54,241.0,0,1,-3.32,1.0
 2020,Michigan,Ipsos,637,Gary C. Peters,2020MIPeters,-54,312.0,1,0,1.31,1.0
@@ -891,7 +954,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Minnesota,SurveyUSA,553,Jason Lewis,2020MNLewis,-61,197.0,0,1,0.64,1.0
 2020,Maine,Citizen Data,600,Sara Gideon,2020MEGideon,-61,293.0,1,0,2.9,1.0
 2020,Maine,Citizen Data,600,Susan M. Collins,2020MECollins,-61,244.0,0,1,2.9,1.0
-2020,Maine,Citizen Data,600,Lisa Savage,2020MESavage,-61,9.0,0,0,2.9,0.0
 2020,Virginia,Virginia Commonwealth University,693,Mark R. Warner,2020VAWarner,-68,381.0,1,0,0.59,1.0
 2020,Virginia,Virginia Commonwealth University,693,Daniel M. Gade,2020VAGade,-68,263.0,0,1,0.59,1.0
 2020,Arizona,Change Research,470,Mark Kelly,2020AZKelly,-61,239.0,1,0,-2.47,0.0
@@ -906,7 +968,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Maine,Fabrizio Ward/Hart Research Associates,800,Susan M. Collins,2020MECollins,-66,376.0,0,1,2.9,1.0
 2020,Maine,Fabrizio Ward/Hart Research Associates,800,Sara Gideon,2020MEGideon,-66,352.0,1,0,2.9,1.0
 2020,Maine,Fabrizio Ward/Hart Research Associates,800,Susan M. Collins,2020MECollins,-66,344.0,0,1,2.9,1.0
-2020,Maine,Fabrizio Ward/Hart Research Associates,800,Lisa Savage,2020MESavage,-66,48.0,0,0,2.9,0.0
 2020,Colorado,Fabrizio Ward/Hart Research Associates,800,John Hickenlooper,2020COHickenlooper,-66,408.0,1,0,0.77,1.0
 2020,Colorado,Fabrizio Ward/Hart Research Associates,800,Cory Gardner,2020COGardner,-66,368.0,0,1,0.77,1.0
 2020,Georgia,Fabrizio Ward/Hart Research Associates,800,Jon Ossoff,2020GAOssoff,-66,384.0,1,0,-5.23,0.0
@@ -991,7 +1052,6 @@ cycle,state,pollster,samplesize,candidate_name,Candidateidentifier,daysLeft,numb
 2020,Kansas,SurveyUSA,1202,Roger Marshall,2020KSMarshall,-91,552.0,0,1,-13.31,1.0
 2020,Maine,Critical Insights,453,Sara Gideon,2020MEGideon,-99,194.0,1,0,2.9,1.0
 2020,Maine,Critical Insights,453,Susan M. Collins,2020MECollins,-99,172.0,0,1,2.9,1.0
-2020,Maine,Critical Insights,453,Lisa Savage,2020MESavage,-99,22.0,0,0,2.9,0.0
 2020,Georgia,SurveyUSA,623,Jon Ossoff,2020GAOssoff,-90,255.0,1,0,-5.23,0.0
 2020,Georgia,SurveyUSA,623,David A. Perdue,2020GAPerdue,-90,274.0,0,1,-5.23,1.0
 2020,GeorgiaS,SurveyUSA,623,Raphael Warnock,2020GAWarnock,-90,105.0,1,0,-5.23,0.0

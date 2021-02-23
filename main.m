@@ -103,7 +103,7 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         CNNdata = vertcat(CNNdata, CNNdata2018);
     % elseif mode==3
         % forecast 2020 races
-        CNNdata2020 = readData("data/CNNData2020.csv");
+        CNNdata2020 = readData("data/CNNdata2020.csv");
         CNNdata2020(:, ["candidate_name"]) = [];
         result2020 = readData("data/2020results.csv");
         for i=1:size(CNNdata2020)
