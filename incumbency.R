@@ -33,21 +33,23 @@ horizons = c('0',
              '56')
 
 # R&R
-horizon = args[1]
-cv_year = args[2]
-TYPE = args[3]
+# horizon = args[1]
+# cv_year = args[2]
+# TYPE = args[3]
 
 best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
-IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 
+cv_year = 2016
 test_year=2016
 a = 1
+TYPE = "GP"
 
-# 1:length(horizons)
+for (horizon in horizons){
+  IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 for (b in (IDX):(IDX)) {
   
-  input_file = paste('results/incumbent', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
-  output_file = paste('nlZs/stan_incumbent_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
+  input_file = paste('RR/results/incumbent', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('RR/nlZs/stan_incumbent_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
   
   data <- read.csv(input_file)
   print(input_file)
@@ -303,7 +305,7 @@ for (b in (IDX):(IDX)) {
               refresh=0
   )
 
-  saveRDS(fit, file = paste("models/incumbent_",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
+  saveRDS(fit, file = paste("RR/models/incumbent_",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
   
   fit_params <- as.data.frame(fit)
   
@@ -569,7 +571,7 @@ for (b in (IDX):(IDX)) {
   write.csv(result,output_file)
   
   # output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  output_file = paste('results/stan_NLZincumbent', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('RR/results/stan_NLZincumbent', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
   
   result <- data.frame(NLZ)
   
@@ -577,4 +579,5 @@ for (b in (IDX):(IDX)) {
   
   write.csv(result,output_file)
   
+}
 }

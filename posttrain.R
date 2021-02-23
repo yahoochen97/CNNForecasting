@@ -6,7 +6,7 @@ horizons = c('0',
              '42',
              '56')
 
-TYPE='GP_roll'
+TYPE='incumbent_GP'
 
 best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''));
 best_cv_idx = best_cv_idx$opt_idx
@@ -17,16 +17,16 @@ test_years = c(1992,1994,1996,1998,2000,2002,2004,2006,2008,2010,2012,2014,2016,
 
 test_years = c(2016, 2018)
 
-test_years = c(2012)
+test_years = c(2016)
 
 for (a in 1:length(horizons)) {
   for (test_year in test_years) {
-    fit = readRDS(file = paste("models/",TYPE, "_", test_year,"day_", horizons[a] , "_fit.rds",sep=''))
+    fit = readRDS(file = paste("RR/models/",TYPE, "_", test_year,"day_", horizons[a] , "_fit.rds",sep=''))
     fit_params <- as.data.frame(fit)
     
     # load the prior files
-    input_file = paste('results/', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-    output_file = paste('results/stan_LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+    input_file = paste('RR/results/', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+    output_file = paste('RR/results/stan_LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
     data <- read.csv(input_file)
     print(input_file)
     
@@ -250,7 +250,7 @@ for (a in 1:length(horizons)) {
     
     write.csv(result,output_file)
     
-    output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
+    output_file = paste('RR/results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
     
     result <- data.frame(NLZ)
     
