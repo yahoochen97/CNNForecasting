@@ -5,8 +5,8 @@ TYPE=$1
 input_str=$2
 cv_year=$3
 
-module add R-4
-module add gcc-8.3.0
+# module add R-4
+# module add gcc-8.3.0
 
 mkdir -p /export/cluster-tmp/chenyehu
 
