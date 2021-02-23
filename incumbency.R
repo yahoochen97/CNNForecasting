@@ -1,36 +1,14 @@
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
 
-# test if there is at least one argument: if not, use default 2020 with GP model
-if (length(args)==0) {
-  test_year = 2020
-  # define model type: gp prior or lm prior
-  TYPE = 'GP'
-}
-if (length(args)==1){
-  # define the test year
-  test_year = as.double(args[1])
-  TYPE = 'GP'
-}
-if (length(args)==2){
-  # define the test year
-  test_year = as.double(args[1])
-  TYPE = args[2]
-}
+horizon = args[1]
+cv_year = args[2]
+TYPE = args[3]
 
 # load packages
 library(rstan)
 
 PLOT = FALSE
-
-# define horizons
-horizons = c('0',
-             '7',
-             '14',
-             '21',
-             '28',
-             '42',
-             '56')
 
 # R&R
 # horizon = args[1]
@@ -39,17 +17,16 @@ horizons = c('0',
 
 best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
 
-cv_year = 2016
-test_year=2016
+test_year=cv_year
 a = 1
-TYPE = "GP"
+horizons = c(horizon)
 
 for (horizon in horizons){
   IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
 for (b in (IDX):(IDX)) {
   
-  input_file = paste('RR/results/incumbent', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
-  output_file = paste('RR/nlZs/stan_incumbent_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
+  input_file = paste('results/incumbent', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('nlZs/stan_incumbent_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
   
   data <- read.csv(input_file)
   print(input_file)
@@ -305,7 +282,7 @@ for (b in (IDX):(IDX)) {
               refresh=0
   )
 
-  saveRDS(fit, file = paste("RR/models/incumbent_",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
+  saveRDS(fit, file = paste("models/incumbent_",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
   
   fit_params <- as.data.frame(fit)
   
@@ -571,7 +548,7 @@ for (b in (IDX):(IDX)) {
   write.csv(result,output_file)
   
   # output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  output_file = paste('RR/results/stan_NLZincumbent', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('results/stan_NLZincumbent', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
   
   result <- data.frame(NLZ)
   
