@@ -4,7 +4,7 @@ horizons = c('0',
              '21',
              '28',
              '42',
-             '56')
+              '56')
 
 TYPE='incumbent_GP'
 
@@ -15,9 +15,7 @@ best_cv_idx = best_cv_idx$opt_idx
 
 test_years = c(1992,1994,1996,1998,2000,2002,2004,2006,2008,2010,2012,2014,2016,2018)
 
-test_years = c(2016, 2018)
-
-test_years = c(2016)
+test_years = c(2018, 2020)
 
 for (a in 1:length(horizons)) {
   for (test_year in test_years) {
