@@ -36,7 +36,7 @@ one_job(){
 for TYPE in ${TYPES[@]}; do
     for input_str in ${input_strs[@]}; do
         for cv_year in ${cv_years[@]}; do
-            bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "${TYPE}_${input_str}_${cv_year}" "./onerun $TYPE $input_str"
+            bsub -R '(!gpu) span[hosts=1]' -G SEAS-Lab-Garnett -J "${TYPE}_${input_str}_${cv_year}" "./matlabrun $TYPE $input_str"
         done
     done
 done
