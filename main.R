@@ -8,17 +8,13 @@ if (length(args)==0) {
   test_year = 2020
   # define model type: gp prior or lm prior
   TYPE = 'GP'
+  horizon = '0'
 }
-if (length(args)==1){
-  # define the test year
-  test_year = as.double(args[1])
-  TYPE = 'GP'
-}
-if (length(args)==2){
-  # define the test year
-  test_year = as.double(args[1])
-  TYPE = args[2]
-}
+
+test_year = as.integer(args[1])
+TYPE = args[2]
+horizon = args[3]
+
 
 # load packages
 library(rstan)
@@ -43,19 +39,17 @@ horizons = c('0',
 # the optimal index of hyperparameters in the loyo process
 # optimal index can be obtained with loocv_nlZs.R
 
-# best_cv_idx = read.csv(paste("results/", TYPE, "_opthyp.csv", sep=''));
+best_cv_idx = read.csv(paste("results/", TYPE, "_opthyp.csv", sep=''));
 # best_cv_idx = best_cv_idx$opt_idx
 
 # R&R
-horizon = args[1]
-cv_year = args[2]
-TYPE = args[3]
+# horizon = args[1]
+# cv_year = args[2]
+# TYPE = args[3]
 
-best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
+# best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
+# best_cv_idx = best_cv_idx$opt_idx
 IDX = best_cv_idx$opt_idx[best_cv_idx$horizons==str2lang(horizon)]
-
-test_year=2016
-a = 1
 
 # 1:length(horizons)
 for (b in (IDX):(IDX)) {
@@ -63,11 +57,12 @@ for (b in (IDX):(IDX)) {
   # load the prior files
   # input_file = paste('results/LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
   # output_file = paste('results/stan_LOO', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  input_file = paste('results/GP_', TYPE, '_' , cv_year, 'day', horizon, '_', b ,'.csv',sep='')
-  output_file = paste('nlZs/stan_GP_', TYPE, '_' , cv_year, 'day', horizon, '_', b,'.csv',sep='')
+  input_file = paste('results/LOO', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('results/stan_LOO', TYPE, '_' , test_year, 'day', horizon, '_', b,'.csv',sep='')
   
   data <- read.csv(input_file)
   print(input_file)
+  print(output_file)
   
   # remove unlike candidates of races with >4 candidates
   data <- data[data$cycle!=2016 | data$state!='Louisiana' | data$candidate!='Flemsing',]
@@ -293,6 +288,7 @@ for (b in (IDX):(IDX)) {
   
   # define stan model
   # model <- stan_model("model.stan")
+  a = which(horizon==horizons)
   
   # train stan model
   fit <- stan(file = "model.stan",
@@ -308,7 +304,7 @@ for (b in (IDX):(IDX)) {
   )
   # saveRDS(fit, file = paste("models/",TYPE, "_", test_year, "day_", horizons[a] ,"_fit.rds",sep=''))
   
-  saveRDS(fit, file = paste("models/GP_",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
+  saveRDS(fit, file = paste("models/",TYPE, "_", test_year, "day_", horizon ,"_fit.rds",sep=''))
   
   # print(summary(fit,c('alpha','beta','ppb','eb','year_sig'))$summary)
   fit_params <- as.data.frame(fit)
@@ -617,9 +613,9 @@ for (b in (IDX):(IDX)) {
   #   }
   # }
   
-  # LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
-  #   dplyr::group_by(State) %>% 
-  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
+  # LEVELS = posteriors[posteriors$Party=='DEM',] %>%
+  #   dplyr::group_by(State) %>%
+  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>%
   #   dplyr::select(State, tmp) %>%
   #   dplyr::distinct(State, tmp) %>%
   #   dplyr::arrange((tmp)) %>%
@@ -672,14 +668,15 @@ for (b in (IDX):(IDX)) {
   #           panel.background = element_rect(fill = 'white', colour = 'white'))
   # }
   # 
+  
   # posteriors$State <- factor(posteriors$State, levels = LEVELS)
-  # 
+
   # LIKENAMES = c('Safe R', 'Likely R','Lean R', 'Toss-up', 'Lean D','Likely D','Safe D')
   # posteriors$Type <- factor(posteriors$Type, levels = LIKENAMES)
-  # 
-  # LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
-  #   dplyr::group_by(State) %>% 
-  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
+
+  # LEVELS = posteriors[posteriors$Party=='DEM',] %>%
+  #   dplyr::group_by(State) %>%
+  #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>%
   #   dplyr::select(State, tmp) %>%
   #   dplyr::distinct(State, tmp) %>%
   #   dplyr::arrange((tmp))
@@ -695,33 +692,52 @@ for (b in (IDX):(IDX)) {
   #   }
   # }
   # 
+  # # result2020 = read.csv("data/2020results.csv")
+  # 
+  # posteriors = posteriors[posteriors$State!="AR",]
+  # 
+  # result2020 = posteriors %>% 
+  #   group_by(Party, State) %>%
+  #   summarise(V=mean(VOTE))
+  # result2020$y = c(32:1,32:1)
+  # 
+  # 
   # if(PLOT){
-  #   p = ggplot(posteriors, aes(x = Posterior_Vote, y = reorder(State, desc(State)), color = Party, fill = Party)) +
-  #     geom_density_ridges(alpha=0.6) +
+  #   p = ggplot(posteriors[posteriors$Party=="DEM",], aes(x = Posterior_Vote, y = reorder(State, desc(State)), color = Party, fill = Party)) +
+  #     geom_density_ridges(alpha=0.2) + 
   #     scale_y_discrete(expand = c(0, 0), name = "") +
   #     scale_x_continuous(expand = c(0, 0), breaks = c(0,20,40,60,80,100),
   #                        name = "Posterior Vote (%)") +
   #     theme(panel.grid.major.x = element_line(color = "gray"),
   #           # explicitly set the horizontal lines (or they will disappear too)
   #           panel.grid.major.y = element_line(size=.4, color="grey" ) ,
-  #           axis.text.y = element_text(colour =STATE_COLORS)) +
-  #     # geom_hline(yintercept=0:length(STATE_COLORS), linetype="solid", color = "grey", size=0.2) + 
-  #     scale_fill_manual(values = c("blue","red"), labels = c("DEM","REP")) +
-  #     scale_color_manual(values = c(NA,NA), guide = "none") +
+  #           # axis.text.y = element_text(colour =STATE_COLORS)
+  #           ) +
+  #     # geom_hline(yintercept=0:length(STATE_COLORS), linetype="solid", color = "grey", size=0.2) +
+  #     scale_fill_manual(values = c("blue"), labels = c("DEM")) +
+  #     scale_color_manual(values = c(NA), guide = "none") +
   #     coord_cartesian(xlim = c(0, 100), clip='on') +
   #     guides(fill = guide_legend(
   #       override.aes = list(
-  #         fill = c("blue","red"),
+  #         fill = c("blue"),
   #         color = NA, point_color = NA)
   #     )
   #     ) +
-  #     geom_hline(yintercept=sum(LEVELS$tmp>=50)+1, linetype="dashed", color = "black") + 
-  #     ggtitle("Posterior predictive density of vote share for major party candidates") +
+  #     # geom_hline(yintercept=sum(LEVELS$tmp>=50)+1, linetype="dashed", color = "black") +
+  #     ggtitle("Posterior predictive density of vote share for Democratic candidates") +
   #     theme(plot.title = element_text(hjust=0.5),
+  #           legend.position = "none",
   #           panel.background = element_rect(fill = 'white', colour = 'white'))
-  #   
-  # }
   # 
+  #     q = p +
+  #       geom_point(data = result2020[result2020$Party=="DEM",], 
+  #                  mapping = aes(x = V, y = y),
+  #                  shape = 8, colour = "blue", size = 2)
+  #     q = p + geom_segment(data = result2020[result2020$Party=="DEM",], 
+  #                          mapping = aes(x = V, xend=V, y = y, yend=y+0.5),
+  #                          colour = "black", size=0.3)
+  # }
+  
   # LEVELS = posteriors[posteriors$Party=='DEM',] %>% 
   #   dplyr::group_by(State) %>% 
   #   dplyr::mutate(tmp = mean(Posterior_Vote)) %>% 
@@ -785,7 +801,7 @@ for (b in (IDX):(IDX)) {
   write.csv(result,output_file)
   
   # output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizons[a], '_', best_cv_idx[a] ,'.csv',sep='')
-  output_file = paste('results/stan_NLZGP', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
+  output_file = paste('results/stan_NLZ', TYPE, '_' , test_year, 'day', horizon, '_', b ,'.csv',sep='')
   
   result <- data.frame(NLZ)
 
@@ -867,3 +883,23 @@ for (b in (IDX):(IDX)) {
 #                       RHAT)
 # 
 # write.csv(results,"results/stan.csv")
+
+# result <- data.frame(
+#                      STATE,
+#                      PARTY,
+#                      LOWER95,
+#                      UPPER95,
+#                      MEDIAN
+#                      )
+# 
+# 
+# tmp = ggplot_build(p)$layout$panel_scales_y[[1]]$range$range[8:25]  
+# tmp = unlist(lapply(tmp, function(x){state.name[which(state.abb == x)]}))
+# result = result[rev(order(factor(STATE,levels = tmp))),]
+# 
+# result = result[result$PARTY==1,c("STATE","LOWER95","UPPER95", "MEDIAN")]
+# tmp = result[result$STATE %in% tmp,]
+# tmp$PARTY = unlist(lapply(tmp$PARTY, function(x){if (x==-11) "REP" else "DEM"}))
+# names(result) <- tolower(names(result))
+# tmp = format(tmp, digit=3)
+# write_csv(tmp,"RR/close2020.csv")

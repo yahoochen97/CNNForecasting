@@ -11,8 +11,8 @@ cv_year = args[2]
 TYPE = args[3]
 IDX = args[4]
 
-best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
-best_cv_idx = best_cv_idx$opt_idx
+# best_cv_idx = read.csv(paste("results/GP_opthyp.csv", sep=''))
+# best_cv_idx = best_cv_idx$opt_idx
 
 
 if (TYPE=='GP'){
@@ -22,9 +22,10 @@ if(TYPE=='LM'){
   search_size = 20
 }
 
-print(paste(TYPE, '_' , cv_year, 'day', horizon,sep=''))
+print(paste(TYPE, '_' , cv_year, 'day', horizon, '_', IDX,sep=''))
 library(rstan)
-# rstan_options(auto_write=TRUE)
+rstan_options(auto_write=TRUE)
+options(mc.cores = parallel::detectCores())
 
 averaged_nlZs = c()
 
@@ -242,6 +243,7 @@ for (b in (IDX):(IDX)){
   
   # define stan model
   model <- stan_model("model.stan")
+  cat("Start fitting stan...")
   
   # train stan model
   # set seed to be the location in the search sequence

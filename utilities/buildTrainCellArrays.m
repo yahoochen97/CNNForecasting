@@ -1,4 +1,4 @@
-function [xs, ys, raceinfos] = buildTrainCellArrays(data, years, states)
+function [xs, ys, raceinfos, g3] = buildTrainCellArrays(data, years, states)
 %
 % Obtain polling/fundemental features and election race metadata of given years/states
 % Results are in the form of cell arrays. 
@@ -23,10 +23,13 @@ function [xs, ys, raceinfos] = buildTrainCellArrays(data, years, states)
     ys = cell(1000,1);
     raceinfos = cell(1000,1);
     counter = 1;
+    g3 = 0;
     for i = 1:numel(years)
        for j = 1:numel(states)
           [x, y, candidateNames, v, pvi, experienced, parties] = getRaceCandidateData(data, years(i), states(j));
           if isempty(x), continue; end
+%            if numel(candidateNames)>2, g3 = g3+1; disp(years(i));disp(states(i)); end
+          g3 = g3 + 1;
           for k = 1:numel(x)
              xs{counter} = x{k};
              ys{counter} = y{k};

@@ -25,8 +25,8 @@ function [varout]=main(TYPE, mode, tau, plot)
     taus = [0,7, 14,21, 28,42, 56];
 
     % define search space
-    search_size = 100;
     if strcmp(TYPE, "GP")==1
+        search_size = 100;
         p = sobolset(3, 'Skip', 1);
     else 
         search_size = 20;
@@ -176,7 +176,6 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         % parms.test_year = 2016;
         winner_all = readData("data/winners_all.csv");
         parms.test_year = 2018;
-        disp(parms.test_year);
 
         % add incumbency
         for i=1:numel(raceinfos)
@@ -194,7 +193,7 @@ function myrun(tau,type, ls, os, lik, j, mode, plot)
         % precompute coefs of prior linear model of the linear trend intercept
         parms.coefs = priorModel(CNNdata, parms.test_year);
         plot_path = "plots/" + type + "MargLinTre"+num2str(parms.test_year)+"_"+num2str(tau);
-        plot_path = "RR/plots/" + type + "_"+num2str(parms.test_year)+"_"+num2str(tau);
+        % plot_path = "RR/plots/" + type + "h2_"+num2str(parms.test_year)+"_"+num2str(tau);
         if strcmp(type, "GP")==1
             [allRaces, fts, s2s] = gpm(hyp, xs, ys, raceinfos, plot_path, parms);
         else

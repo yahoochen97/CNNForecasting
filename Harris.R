@@ -1,6 +1,9 @@
 library(ggridges)
 library(ggplot2)
 library(grid)
+library(dplyr)
+
+setwd('/Users/yahoo/Documents/WashU/CSE515T/Code/Gaussian Process')
 
 horizons = c('0',
              '7',
@@ -16,14 +19,15 @@ best_cv_idx = read.csv(paste("results/", TYPE, "_opthyp.csv", sep=''));
 best_cv_idx = best_cv_idx$opt_idx
 
 test_year = 2016
-STATE = "California"
-CANDIDATE = "Harris"
+STATE = "Arizona"
+CANDIDATE = "McCain"
+
 
 COLNAMES = c('horizon','Posterior_Vote')
 HARRIS = data.frame(matrix(ncol = length(COLNAMES), nrow = 0))
 colnames(HARRIS) = COLNAMES
 
-for (a in 1:length(horizons)) {
+for (a in length(horizons):1) {
     fit = readRDS(file = paste("models/",TYPE, "_", test_year,"day_", horizons[a] , "_fit.rds",sep=''))
     fit_params <- as.data.frame(fit)
     
@@ -101,10 +105,12 @@ for (a in 1:length(horizons)) {
 
 v = 100*vote[j]
 v = round(v, 2)
+LABELS = rev(c("Election Day", "One week left", "Two weeks left",
+           "Three weeks left", "For weeks left", "Six weeks left", "Eight weeks left"))
 
 ggplot(HARRIS, aes(x = Posterior_Vote, y = reorder(horizon, desc(horizon)))) +
   geom_density_ridges(alpha=0.6) +
-  scale_y_discrete(expand = c(0, 0), name = "Horizon") +
+  scale_y_discrete(expand = c(0, 0), name = "Horizon",labels=LABELS) +
   scale_x_continuous(expand = c(0, 0), breaks = c(40,50,60,v, 70,80),
                      name = "Posterior Vote (%)") +
   geom_vline(xintercept=v, colour="blue") +

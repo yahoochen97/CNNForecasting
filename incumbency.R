@@ -104,7 +104,7 @@ for (b in (IDX):(IDX)) {
   stan_party <- matrix(0,counter,C)
   stan_experienced <- matrix(0,counter,C)
   stan_incumbency <- matrix(0,counter,C)
-  
+  print(counter)
   for (i in 1:counter) {
     stan_mu[i,1:nc[i]] <- mu[[i]]
     stan_sigma[i,1:nc[i]] = sigma[[i]]

@@ -95,7 +95,7 @@ function posttrain(raceinfos, fts, s2s, allRaces, hyp, tau, parms)
         posteriorstd{i} = sqrt(s2s(i));
         vote{i} = raceinfos{i}{4};
         pvi{i} = raceinfos{i}{5};
-        incumbent{i} = raceinfos{i}{8};
+%         incumbent{i} = raceinfos{i}{8};
         
         if strcmp(state{i},'Georgia Special')
             pvi{i} = 0;
@@ -130,15 +130,16 @@ function posttrain(raceinfos, fts, s2s, allRaces, hyp, tau, parms)
 %     fprintf('95 CI on test data: %0.6f\n',1-Nout_test/(N-n_train));
 %     disp("Test Average nlZ: " + mean(nlZ));
     
-    forecast = table(cycle, state, candidate, posteriormean, posteriorstd, vote, pvi, party, experienced, incumbent);
+    forecast = table(cycle, state, candidate, posteriormean, posteriorstd, vote, pvi, party, experienced);
     if ~exist('results', 'dir')
         mkdir('results');
     end
 
     if(~parms.plot)
-%         writetable(forecast,strcat('results/LOO',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
+        % disp(strcat('results/LOO',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
+        writetable(forecast,strcat('results/LOO',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
         % heuristic 2
-         writetable(forecast,strcat('results/incumbent',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
+%          writetable(forecast,strcat('results/incumbent',parms.type, '_',int2str(test_year),'day',num2str(tau), '_', num2str(j),'.csv'));
     end
     
 %     disp(tau);

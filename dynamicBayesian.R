@@ -1,33 +1,24 @@
-# setwd('/Users/yahoo/Documents/WashU/CSE515T/Code/Gaussian Process/')
+setwd('/Users/yahoo/Documents/WashU/CSE515T/Code/Gaussian Process/')
 
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
 
 # test if there is argument: if not, use default 2018
 if (length(args)==0) {
-  input_str = '0'
-  test_year = 2010
-}
-if (length(args)==1){
-  # define the test year
-  input_str = args[1]
+  horizon = '0'
   test_year = 2018
 }
-if (length(args)==2){
-  # define the test year
-  input_str = args[1]
-  test_year = as.double(args[2])
-}
 
+horizon = args[1]
+test_year = as.double(args[2])
 
-horizons = c('0',
-             '7',
-             '14',
-             '21',
-             '28',
-             '42',
-             '56')
-
+# horizons = c('0',
+#              '7',
+#              '14',
+#              '21',
+#              '28',
+#              '42',
+#              '56')
 
 library(rstan)
 
@@ -43,7 +34,6 @@ computeh = function(df, test_year){
   model <- lm(vote ~ pvi + experienced + Democrat + Republican + pvi*Republican, data) 
   return(model)
 }
-
 
 # read data
 df <- read.csv("data/CNNdata1992-2016.csv")
@@ -107,10 +97,12 @@ priorModel = computeh(df, test_year)
 df <- df[df$cycle==test_year, ]
 
 
-horizons = c(input_str)
+horizons = c(horizon)
 
-for (input_str in horizons) {
-  output_file <- paste(output_path, test_year, "day_", input_str,'.csv',sep='')
+start.time <- Sys.time()
+
+for (horizon in horizons) {
+  output_file <- paste(output_path, test_year, "day_", horizon,'.csv',sep='')
   # slicing parameter
   W = 4
   precision = 1/0.1^2
@@ -140,7 +132,7 @@ for (input_str in horizons) {
       experienced = data$experienced[1]
       h = predict(priorModel, data[1,])[[1]]
   
-      data = data[data$daysLeft<=-as.numeric(input_str),]
+      data = data[data$daysLeft<=-as.numeric(horizon),]
       n_poll = nrow(data)
       
       if(n_poll>0 && max(data$daysLeft)<0){
@@ -194,7 +186,7 @@ for (input_str in horizons) {
   
   fit_params <- as.data.frame(fit)
   
-  saveRDS(fit, file = paste("models/brw_", test_year, "day_", input_str , "_fit.rds",sep=''))
+  saveRDS(fit, file = paste("models/brw_", test_year, "day_", horizon , "_fit.rds",sep=''))
   
   CYCLE <- c()
   STATE <- c()
@@ -248,7 +240,7 @@ for (input_str in horizons) {
         PREDS = c(PREDS, pred)
       }
       else{
-        data = data[data$daysLeft<=-as.numeric(input_str),]
+        data = data[data$daysLeft<=-as.numeric(horizon),]
         n_poll = nrow(data)
   
         if(n_poll>0 && max(data$daysLeft)<0){
@@ -348,3 +340,6 @@ for (input_str in horizons) {
   
   write.csv(result,output_file)
 }
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken

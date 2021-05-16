@@ -16,7 +16,7 @@ cv_years = c(1992,1994,1996,1998,2000,2002,2004,2006,2008,2010,2012,2014,2016)
 # model type
 TYPES = c('GP','LM')
 
-for (i in 1:length(TYPES)) {
+for (i in 2:length(TYPES)) {
   MAX_AVE_NLZ = c()
   HORIZONS = c()
   OPT_IDX = c()
