@@ -1,0 +1,93 @@
+#!/bin/bash
+
+mkdir -p nlZs
+mkdir -p results
+
+# The pipeline of our software is summarized as below: 
+# 1. Generate gp posteriors using main.m given forecasting
+#   horizons, cross validation years and gp prior type.
+#   For each horizon/cv year/type setting, there will be
+#   100 files corresponding to 100 different random
+#   hyperparameter setting using sobol sequence.
+# 2. Compute averaged log likelihood on validation year using all year gp
+#   posteriors given horizon, gp prior type and hyperparameter
+#   index. Each DR model is trained on all years except
+#   the year that is being cross-validated. There will be in 
+#   total num of cv years * num of horizons * num of hyperparameter
+#   settings such averaged log likelihood for each gp prior type.
+#   NOTE: this step requires the majority of computation.
+# 3. Determine the optimal hyperparameters for each 
+#   horizon/type setting by comparing the log likelihood 
+#   of the validation election year races, averaged over all
+#   validation years.
+# 4. Use the optimal hyperparameters to generate gp posteriors 
+#   for test year (2018) and forecasting year (2020). Then generate trained
+#   STAN objects using all cv year data and obtain Dirichlet regression 
+#   posteriors, for each horizon.
+# 5. Baseline: Bayesian random walk
+# 
+
+# define variables
+horizons=(0 7 14 21 28 42 56)
+cv_years=(1992 1994 1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016)
+gp_prior_types=("GP" "LM")
+
+
+# 1. generate gp posteriors for Leave-one-year-out CV
+
+# for TYPE in ${gp_prior_types[@]}; do
+#     for horizon in ${horizons[@]}; do
+#         # matlab code will iterate over 1992 to 2016 years
+#         matlab -nodisplay -nodesktop -r "main('${TYPE}', 1, ${horizon}, 0); exit;"
+#     done
+# done
+
+# 2. compute averaged log likelihood on validation year
+
+# for TYPE in ${gp_prior_types[@]}; do
+#     for horizon in ${horizons[@]}; do
+#         for cv_year in ${cv_years[@]}; do
+#             if [ ${TYPE}=='GP' ]; then
+#                 num_hyps=100
+#             else
+#                 num_hyps=20
+#             fi
+#             for i in {1..${num_hyps}};
+#                 Rscript --vanilla onejob.R $horizon $cv_year $TYPE $i
+#             done
+#         done
+#     done
+# done
+
+# 3. determine the optimal hyperparameters 
+# Rscript --vanilla loocv_nlZs.R
+
+# 4. generate gp/DR posteriors for test year and forecasting year
+
+test_years=(2018 2020)
+
+# for TYPE in ${gp_prior_types[@]}; do
+#     # matlab code will iterate over all horizons
+#     matlab -nodisplay -nodesktop -r "main('${TYPE}', 2, 0, 0); exit;"
+#     matlab -nodisplay -nodesktop -r "main('${TYPE}', 3, 0, 0); exit;"
+# done
+
+# for TYPE in ${gp_prior_types[@]}; do
+#     for horizon in ${horizons[@]}; do
+#         for test_year in ${test_years[@]}; do
+#             Rscript --vanilla main.R  $test_year $TYPE $horizon
+#         done
+#     done
+# done
+
+# 5. baseline: bayesian random walk
+
+test_years=(1992 1994 1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016 2018)
+
+for horizon in ${horizons[@]}; do
+    for test_year in ${test_years[@]}; do
+        Rscript --vanilla dynamicBayesian.R $horizon $test_year 
+    done
+done
+
+
